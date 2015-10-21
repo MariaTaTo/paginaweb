@@ -22,6 +22,7 @@ import edu.eci.cosw.samples.model.Proveedor;
 import edu.eci.cosw.samples.persistencia.AutorizacionRepository;
 import edu.eci.cosw.samples.persistencia.CotizacionesRepository;
 import edu.eci.cosw.samples.persistencia.DespachoRepository;
+import edu.eci.cosw.samples.persistencia.DetalleOrdenConprRepository;
 import edu.eci.cosw.samples.persistencia.DetallesInventarioRepository;
 import edu.eci.cosw.samples.persistencia.DetallesOrdenesCompraRepository;
 import edu.eci.cosw.samples.persistencia.EpsafilidaRepository;
@@ -54,7 +55,9 @@ public class Clase {
     @Autowired
     MedicamentoPPRepository mppr;
     
-      
+    @Autowired
+    DetalleOrdenConprRepository doc;
+    
     @Autowired
     MedicamentoRepository mr;
     
@@ -93,13 +96,13 @@ public class Clase {
     
     public DetalleOrdenCompra consultarOrden (int id) {
     
-        DetalleOrdenCompra p = docr.findOne(id);
+        DetalleOrdenCompra p = doc.findOne(id);
         return p;
     }
     
     public Iterable<DetalleOrdenCompra> consultarOrdenes(){
         
-        Iterable<DetalleOrdenCompra> p = docr.findAll();
+        Iterable<DetalleOrdenCompra> p = doc.findAll();
         return p;
     }
        

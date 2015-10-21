@@ -134,7 +134,7 @@
      
         $scope.ConsultarPedido=function(){
             
-            $scope.pedido= IPSRestAPI.getDetalleOrdenCompra($scope.idordenCompra).success(function(data){
+            $scope.pedido= IPSRestAPI.getOrdenCompra($scope.idordenCompra).success(function(data){
                 $scope.pedido=data;
             });
             

@@ -38,11 +38,6 @@ public class ManejadorDetalleOrdenesCompra {
         DetalleOrdenCompra cat = c.consultarDetalleOrdenCompraPorId(id);
         return cat;
     } 
-    @RequestMapping(value="/{id}", method = RequestMethod.GET)
-    public DetalleOrdenCompra ConsultarPedido(@PathVariable int id) {  
-        DetalleOrdenCompra cat = c.consultarDetalleOrdenCompraPorId(id);
-        return cat;
-    } 
     
     
     

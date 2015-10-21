@@ -592,84 +592,88 @@
 		</div>
     </section>
 
-    
-    
-    
-    
     <section class="contact" id="contact">
-          <div class="container">
+        <div class="container">
+			<div class="text-center animateup">
+				<div class="inline-icons-text section-heading">
+					<div class="inline-icon">
+						<hr/><hr/><hr/><hr/><hr/>
+					</div>
+					<span class="inline-icon heading-width">
+						<span class="heading-text">Contact Us</span>
+					</span>
+					<div class="inline-icon">
+						<hr/><hr/><hr/><hr/><hr/>
+					</div>
+				</div>
+			</div>
+			
+			<div class="gap-50"></div>
+			<h3 class="text-center">We Are Ready To Work With You</h3>
             <div class="row">
-                <div class="col-lg-12 text-center animateup">
-					<div class="inline-icons-text section-heading">
-						<div class="inline-icon">
-							<hr/><hr/><hr/><hr/><hr/>
+                <div class="col-md-7 animateright">
+                    <form role="form">
+                        <div class="form-group input-group col-xs-12 floating-label-form-group">
+							<span class="input-group-addon"> <i class="fa fa-user fa-lg"></i> </span>
+
+							<label for="name">Name</label>
+							
+							<input class="form-control" type="text" name="name" id="name" placeholder="Name">
 						</div>
-						<span class="inline-icon heading-width">
-							<span class="heading-text">Consultar Autorizacion</span>
-						</span>
+                        <div class="form-group input-group col-xs-12 floating-label-form-group">
+							<span class="input-group-addon"> <i class="fa fa-envelope-o fa-lg"></i> </span>
+							<label for="email">Email Address</label>
+							<input class="form-control" type="email" name="email" id="email" placeholder="Email Address">
+						</div>
+                        <div class="form-group input-group col-xs-12 floating-label-form-group message-addon">
+							<span class="input-group-addon"> <i class="fa fa-pencil-square-o fa-lg"></i> </span>
+							<label for="message">Message</label>
+							<textarea placeholder="Message" class="form-control" name="message" id="message" rows="5"></textarea>
+						</div>
+                       
+                        <br>
+                        <div class="form-group col-xs-12">
+							<button type="submit" class="btn btn-default btn-lg">Send</button>
+						</div>
+                       
+                    </form>
+                </div>
+				<div class="col-md-5 animateleft contact-sidebar">
+					<div class="inline-icons-text">
 						<div class="inline-icon">
-							<hr/><hr/><hr/><hr/><hr/>
+							<div class="btn-social btn-outline"><i class="fa fa-fw fa-map-marker"></i>
+							</div>
+						</div>
+						<div class="inline-icon">
+							<div class="marker">728 F Block Gulshan Ravi Lahore, Pakistan</div>
+							
+						</div>
+					</div>
+					<div class="inline-icons-text">
+						<div class="inline-icon">
+							<div class="btn-social btn-outline"><i class="fa fa-fw fa-envelope"></i>
+							</div>
+						</div>
+						<div class="inline-icon">
+							<div class="marker">Themifycloud@gmail.com</div>
+							
+						</div>
+					</div>
+					<div class="inline-icons-text">
+						<div class="inline-icon">
+							<div class="btn-social btn-outline"><i class="fa fa-fw fa-phone"></i>
+							</div>							
+						</div>
+						<div class="inline-icon">
+							<div class="marker">+923234392424</div>
+							
 						</div>
 					</div>
                 </div>
-            </div>	
-            <div class="gap-30"></div>
-            
-                    <div class="form-group input-group">
-                        <span class="input-group-addon"> <i class="fa fa-user fa-lg"></i> </span>
-                        <label for="name">Numero de Seguimiento </label>
-			<input class="form-control" type="text" ng-model="idordenCompra" id="idordenCompra" placeholder="Numero de Seguimiento ">
-                    </div>
-                     <br>
-                    <div class="form-group col-xs-12">
-                       <!--button type="submit" class="btn btn-primary" ng-click="getAutorizacion()">Consultar Todas</button-->
-                       <button type="submit" class="btn btn-primary" ng-click="ConsultarPedido()">Consultar</button>
-                    </div>
-            
-            <table class="table table-condensed table-bordered table-striped">
-                <thead>
-                    <tr>
-                       <th>Codigo detalle</th>
-                       <th>Codigo Orden Compra</th>
-                       <th>Codigo Medicamento</th>
-                       <th>Cantidad</th>
-                       
-                    </tr>                
-                </thead>
-                <tbody>
-                    <tr ng-repeat="con in paciente">
-                        <td>
-                            {{con.idDetallesOrdenesCompra}}
-                        </td>
-                         <td>
-                            {{con.idOrdenesCompra}}
-                        </td>
-                        <td>
-                            {{con.idMedicamentosProveedor}}
-                        </td>
-                        <td>
-                            {{con.cantidad}}
-                        </td>
-                        
-                    </tr>                 
-                </tbody>
-            </table>    
+            </div>
         </div>
-    </section>
-    <section class="grey-area talkabout ">
-		<h2 class="main_heading animatezoomin"></h2>
 		
-			<div class="gap-80"></div>
-			<div class="page-scroll">
-				<a href="#contact" class="btn btn-default btn-lg animatezoomin"> </a>
-			</div>	
 	</section>
-    
-    
-    
-    
-    
-    
 	<div id="googleMap" style="width:100%;height:350px;"></div>
     
 	<footer class="text-center">
