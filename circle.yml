@@ -2,7 +2,7 @@ deployment:
   staging:
     branch: master
     heroku: 
-      appname: priorityhealth1
+      appname: pagina
 
 test:
   post:
