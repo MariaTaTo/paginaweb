@@ -1,9 +1,8 @@
 deployment:
   staging:
     branch: master
-    heroku: 
-      appname: pagina
-
+    heroku:
+      appname: foo-bar-123
 test:
   post:
     - mvn site
