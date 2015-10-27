@@ -1,6 +1,6 @@
 deployment:
   staging:
-    branch: master
+    branch: nuevaRamaPrueba
     heroku:
       appname: fast-wildwood-9614
 test:
