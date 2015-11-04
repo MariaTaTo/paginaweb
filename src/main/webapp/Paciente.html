@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="IPS">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+
+        <script src="js/libs/angular.min.js"></script>
+        <script src="js/libs/angular-route.min.js"></script>
+        <script src="js/app/IPSController.js"></script>
+        <script src="js/app/IPSServices.js"></script> 
+        <script src="js/jquery-1.10.2.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.isotope.min.js"></script>
+        <script src="js/jquery.easing.js"></script>
+        <script src="js/classie.js"></script>
+        <script src="js/jquery.appear.js"></script>
+        <script src="js/jquery.flexslider-min.js"></script>
+        <script src="js/jquery.knob.js"></script>
+        <script src="js/countUp.min.js"></script>
+       
+        
+        <title>IPS Priority Health</title>
+        <script type="text/javascript">
+            function preloader() {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("content").style.display = "block";
+            }//preloader
+            window.onload = preloader;
+        </script>
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="css/animate.css" rel="stylesheet" type="text/css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+
+
+        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Titillium+Web:300' rel='stylesheet' type='text/css'>
+
+    </head>
+
+    <body id="page-top" class="index" data-spy="scroll" data-target=".navbar-fixed-top" ng-controller="ipscontroller">
+        <div id="loading"></div>
+        <div id="content">
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-fixed-top navbar-shrink text-center">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!--<a class="navbar-brand" href="#page-top">Clinix</a>-->
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="indexclinix.html"> Inicio</a></li>
+                            <li class="active"><a href="Paciente.html"> Paciente</a></li>
+                           
+                            <li><a href="Consultas.html"> Consultas</a></li>
+                        
+		  
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+
+
+            <section  id="loginPaciente">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center animateup">
+                            <div class="inline-icons-text section-heading">
+                                <div class="inline-icon">
+                                    <hr/><hr/><hr/><hr/><hr/>
+                                </div>
+                                <span class="inline-icon heading-width">
+                                    <span class="heading-text">Pacientes</span>
+                                </span>
+                                <div class="inline-icon">
+                                    <hr/><hr/><hr/><hr/><hr/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>	
+                    <div class="row" align="center">
+                        <h3>Ingreso Paciente</h3>
+
+                        <div>
+                        <input style="background-color:teal" type="text" ng-model="usuario" size="10" />
+
+                        <br><br>
+                        <button class="btn btn-primary filter active" ng-click="login()">Aceptar</button>
+
+                        <br><br>
+                        usuario:{{usuario}}
+                        <br>
+                        contraseña:{{selectedPacienteDetail}}
+                        
+                        <div class="text-center">
+							<div class="page-scroll menu-icon">
+								<a href="#medicamentos">
+									<i class="fa fa-angle-down fa-lg fa-border"></i>
+								</a>
+							</div>
+						</div>
+                    </div>
+
+                    </div>
+                </div>
+            </section>
+            
+             <section  id="medicamentos">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center animateup">
+                        <div class="inline-icons-text section-heading">
+                            <div class="inline-icon">
+                                <hr/><hr/><hr/><hr/><hr/>
+                            </div>
+                            <span class="inline-icon heading-width">
+                                <span class="heading-text">Medicamentos a solicitar</span>
+                            </span>
+                            <div class="inline-icon">
+                                <hr/><hr/><hr/><hr/><hr/>
+                            </div>
+                        </div>
+                    </div>
+                </div>	
+                <div class="row">
+                    
+
+                        <table class="table table-striped" style="cursor: pointer;">
+                            <thead>
+                                <tr>
+                                    <th>Identificacion Medicamento</th>
+                                    <th>nombre</th>
+                                    <th>descripcion</th>                          
+                                    <th>precio</th>           
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="prod in medicamentos" ng-if="prod.medicamentos.autorizaciones.epsafilidas.idEps==EpsId " ng-click="setSelectedMedicamento(prod.medicamentos.idMedicamentos,prod.precio)" >
+                                    <!--ng-if="prod.epsafilidas.idEps==3 && prod.estado=='aprobado'" -->
+                                    <td style="background-color:teal"> {{ prod.medicamentos.idMedicamentos}}</td>
+                                    <td style="background-color:teal">{{ prod.medicamentos.nombre}}</td>
+                                    <td style="background-color:teal"> {{ prod.medicamentos.descripcion}}</td>
+                                    <td style="background-color:teal"> {{ prod.precio}}</td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    
+                    <div class="col-sm-6"  ng-if="selectedMedicamentoId!=-1">
+
+ 
+                        <button center-align class="btn btn-primary filter active" value="OK" ng-click="addToSelectedMedicamentos()">Agregar al carrito.</button>
+                        <br><br>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+	</section>
+	
+    <section class="grey-area testimonial-section">
+		
+		
+			<div class="gap-50"></div>
+			<div class="container animatezoomin">
+				<h2> Productos  seleccionados:</h2>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>nombre de medicamento</th>
+                                            <th>descripcion</th>                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="prod in selectedMedicamentos"  >
+
+                                            <td style="background-color:teal">{{ prod.nombre}}</td>
+                                            <td style="background-color:teal">{{ prod.descripcion}}</td>
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                                <button center-align class="btn btn-primary filter active" value="OK" ng-click="crearPedido()">Crear pedido.</button>
+				
+			</div>
+	</section>
+	
+
+            <footer class="text-center">
+                <div class="footer-below">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                Priority Health 2015-2
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>	
+        </div>
+    </body>
+
+</html>

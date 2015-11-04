@@ -28,7 +28,8 @@
 
     <!-- Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	
+	<link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:300' rel='stylesheet' type='text/css'>
     <!-- IE8 support for HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -57,27 +58,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="page-scroll">
-                        <a href="#page-top"><i class="fa fa-home fa-lg"></i> Inicio</a>
-                    </li>
-					<li class="page-scroll">
-                        <a href="#medicamentos"><i class="fa fa-user fa-lg"></i> Medicamentos</a>
-                    </li>
-					<li class="page-scroll">
-                        <a href="#skills"><i class="fa fa-rocket fa-lg"></i> Consultar Autorizacion</a>
-                    </li>
-					<li class="page-scroll">
-                        <a href="#doctors"><i class="fa fa-users fa-lg"></i> Consultar Despacho</a>
-                    </li>
-					<li class="page-scroll">
-                        <a href="#services"><i class="fa fa-signal fa-lg"></i> Empleado</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#gallery"><i class="fa fa-briefcase"></i> Orden De Compra</a>
-                    </li>
-					<li class="page-scroll">
-                        <a href="#contact"><i class="fa fa-envelope"></i> Recepcion</a>
-                    </li>
+                     <li class="active"><a href="indexclinix.html"> Inicio</a></li>
+                       <li ><a href="Paciente.html">Paciente</a></li>
+                    <li><a href="Empleado.html"> Empleado</a></li>
+                   
 					
                 </ul>
             </div>
@@ -93,26 +77,10 @@
 					<div class="col-lg-12">
 						<div class="intro-text">
 							<img src="img/TemplateImg/logo-main.png" alt=""/>
-							<div>
-                                                            <input style="background-color:teal" type="text" ng-model="usuario" size="10" />
-                                                            
-                                                            <br><br>
-                                                            <button class="btn btn-primary filter active" ng-click="login()">Aceptar</button>
-                                                            
-                                                            <br><br>
-                                                            usuario:{{usuario}}
-                                                            <br>
-                                                            contraseña:{{selectedPacienteDetail}}
-                                                        </div>
+							
 						</div>
 						
-						<div class="text-center">
-							<div class="page-scroll menu-icon">
-								<a href="#medicamentos">
-									<i class="fa fa-angle-down fa-lg fa-border"></i>
-								</a>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -120,576 +88,39 @@
     </header>
 	
     
-    <section  id="medicamentos">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center animateup">
-                        <div class="inline-icons-text section-heading">
-                            <div class="inline-icon">
-                                <hr/><hr/><hr/><hr/><hr/>
-                            </div>
-                            <span class="inline-icon heading-width">
-                                <span class="heading-text">Medicamentos a solicitar</span>
-                            </span>
-                            <div class="inline-icon">
-                                <hr/><hr/><hr/><hr/><hr/>
-                            </div>
-                        </div>
-                    </div>
-                </div>	
-                <div class="row">
-                    
-
-                        <table class="table table-striped" style="cursor: pointer;">
-                            <thead>
-                                <tr>
-                                    <th>Identificacion Medicamento</th>
-                                    <th>nombre</th>
-                                    <th>descripcion</th>                          
-                                    <th>precio</th>           
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="prod in medicamentos" ng-if="prod.medicamentos.autorizaciones.epsafilidas.idEps==EpsId " ng-click="setSelectedMedicamento(prod.medicamentos.idMedicamentos,prod.precio)" >
-                                    <!--ng-if="prod.epsafilidas.idEps==3 && prod.estado=='aprobado'" -->
-                                    <td style="background-color:teal"> {{ prod.medicamentos.idMedicamentos}}</td>
-                                    <td style="background-color:teal">{{ prod.medicamentos.nombre}}</td>
-                                    <td style="background-color:teal"> {{ prod.medicamentos.descripcion}}</td>
-                                    <td style="background-color:teal"> {{ prod.precio}}</td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    
-                    <div class="col-sm-6"  ng-if="selectedMedicamentoId!=-1">
-
-
-                        
-                        <button center-align class="btn btn-primary filter active" value="OK" ng-click="addToSelectedMedicamentos()">Agregar al carrito.</button>
-                        <br><br>
-
-                    </div>
-                </div>
-
-
-
-            </div>
-	</section>
-	
     <section class="grey-area testimonial-section">
 		
 		
 			<div class="gap-50"></div>
 			<div class="container animatezoomin">
-				<h2> Productos  seleccionados:</h2>
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>nombre de medicamento</th>
-                                            <th>descripcion</th>                            
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat="prod in selectedMedicamentos"  >
-
-                                            <td style="background-color:teal">{{ prod.nombre}}</td>
-                                            <td style="background-color:teal">{{ prod.descripcion}}</td>
-
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                                <button center-align class="btn btn-primary filter active" value="OK" ng-click="crearPedido()">Crear pedido.</button>
+				<h2> Priority health</h2>
+                                <h3>Priority Health es una IPS de distribucion de medicamentos especializada en enfermedades de alto costo,
+                                    tiene envios a la puerta de tu casa y gestiona la autorizacion de los medicamentos.</h3>
+                               
 				
 			</div>
 	</section>
+    
 	
-    <section class="skills" id="skills">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center animateup">
-					<div class="inline-icons-text section-heading">
-						<div class="inline-icon">
-							<hr/><hr/><hr/><hr/><hr/>
-						</div>
-						<span class="inline-icon heading-width">
-							<span class="heading-text">Consultar Autorizacion</span>
-						</span>
-						<div class="inline-icon">
-							<hr/><hr/><hr/><hr/><hr/>
-						</div>
-					</div>
-                </div>
-            </div>	
-            <div class="gap-30"></div>
-            
-                    <div class="form-group input-group">
-                        <span class="input-group-addon"> <i class="fa fa-user fa-lg"></i> </span>
-                        <label for="name">Numero de Seguimiento de Autorizacion</label>
-			<input class="form-control" type="text" ng-model="idPaciente" id="idPaciente" placeholder="Numero de Seguimiento de Autorizacion">
+    
+	<footer class="text-center">
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Priority Health 2015-1
                     </div>
-                     <br>
-                    <div class="form-group col-xs-12">
-                       <!--button type="submit" class="btn btn-primary" ng-click="getAutorizacion()">Consultar Todas</button-->
-                       <button type="submit" class="btn btn-primary" ng-click="AutorizacionPorPaciente()">Consultar</button>
-                    </div>
-            
-            <table class="table table-condensed table-bordered table-striped">
-                <thead>
-                    <tr>
-                       <th>Codigo Autorizacion</th>
-                       <th>Nombre</th>
-                       <th>Estado</th>
-                       <th>Fecha Expedicion</th>
-                       <th>Fecha Vencimiento</th>
-                       
-                    </tr>                
-                </thead>
-                <tbody>
-                    <tr ng-repeat="con in consulAuto">
-                        <td>
-                            {{con.numero}}
-                        </td>
-                         <td>
-                            {{con.epsafilidas.nombre}}
-                        </td>
-                        <td>
-                            {{con.estado}}
-                        </td>
-                        <td>
-                            {{con.fechaExpedicion}}
-                        </td>
-                        <td>
-                            {{con.fechaVencimiento}}
-                        </td>
-                    </tr>                 
-                </tbody>
-            </table>    
-        </div>
-    </section>
-    <section class="grey-area talkabout ">
-		<h2 class="main_heading animatezoomin"></h2>
-		
-			<div class="gap-80"></div>
-			<div class="page-scroll">
-				<a href="#contact" class="btn btn-default btn-lg animatezoomin"> </a>
-			</div>
-	</section>
-    
-    
-    <section class="doctors" id="doctors">
-        <div class="container">
-
-            <div class="text-center animateup">
-                <div class="inline-icons-text section-heading">
-                    <div class="inline-icon">
-                        <hr/><hr/><hr/><hr/><hr/>
-                    </div>
-                    <span class="inline-icon heading-width">
-                        <span class="heading-text">Consultar Despacho</span>
-                    </span>
-                    <div class="inline-icon">
-                        <hr/><hr/><hr/><hr/><hr/>
-                    </div>
-                </div>
-            </div>
-            <div class="doctors-list">
-                <div class="gap-50"></div>
-                <div class="fullwidth"></div>
-                <div class="fullwidth">
-                    
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon"> <i class="fa fa-user fa-lg"></i> </span>
-                                        <label for="name">Numero de Seguimiento de Despacho</label>
-					<input class="form-control" type="text" ng-model="idDespacho" id="idDespacho" placeholder="Numero de Seguimiento de Despacho">
-				</div>
-                        
-                        <br>
-                        <div class="form-group col-xs-12">
-                            <button type="submit" class="btn btn-primary" ng-click="DespachoPorPaciente()" >Consultar</button>
-			</div>
-                       
-                    
-                    <table class="table table-condensed table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>Codigo Despacho</th>
-                            <th>Estado</th>
-                            <th>Pago</th>
-                            <th>Tiempo</th>
-                        </tr>                
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="con in consulDes">
-                        <td>
-                            {{con.idDespacho}}
-                        </td>
-                        <td>
-                            {{con.estado}}
-                        </td>
-                        <td>
-                            {{con.numeroPagoCoutaModeradora}}
-                        </td>
-                         
-                        <td>
-                            {{con.tiempoEspera}}
-                        </td>
-                    </tr>                 
-                </tbody>
-            </table>
-                    
-                    
-                </div>
-
-            </div>
-        </div>	
-    </section>
-    
-        <section class="grey-area testimonial-section">
-		<h2 class="main_heading animatezoomin"></h2>
-		
-			<div class="gap-50"></div>
-			<div class="container animatezoomin">
-				<div class="row">
-					<div class="col-sm-12">
-						<div id="testimonials-2" >
-							<!-- Testimonial items -->
-							<div class="carousel-inner">
-								
-								<!--/item-->
-								<div class="item">
-									<div class="textbox">
-										<p class="reviewcomment">
-											Clinix is premium, so clean, super flexible and has a fully responsive doctorgallary! This Template sets the new standard with endless possibilities. Built with HTML5 & CSS3, a lot of thought and care went into this template making it a pleasure to use
-										
-										</p>
-									</div>
-									<div class="fullwidth">
-										<div class="testimonial-metadata">
-											<h3>
-												Ahmad Malik					
-											</h3>
-											<br>
-											
-										</div>
-									</div>
-								</div>
-								<!--/item-->
-								<div class="item">
-									<div class="textbox">
-										<p class="reviewcomment">
-											Clinix is premium, so clean, super flexible and has a fully responsive doctorgallary! This Template sets the new standard with endless possibilities. Built with HTML5 & CSS3, a lot of thought and care went into this template making it a pleasure to use
-										</p>
-									</div>
-									<div class="fullwidth">
-										<div class="testimonial-metadata">
-											<h3>
-												User					
-											</h3>
-											<br>
-											
-										</div>
-									</div>
-								</div>
-								<!--/item-->
-							</div>
-							<!--/Testimonial-inner-->
-						<div class="testimonial-control text-center">
-							<a class="left  btn btn-primary btn-xs" href="#testimonials-2" data-slide="prev"><i class="fa fa-angle-left fa-2x"></i></a>
-							<a class="right btn btn-primary btn-xs" href="#testimonials-2" data-slide="next"><i class="fa fa-angle-right fa-2x"></i></a>
-						</div>
-					</div>
-				
-						
-					</div>
-					
-				</div>
-				
-			</div>
-	</section>
-    
-    
-    
-	<section class="services" id="services">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center animateup">
-                    <div class="inline-icons-text section-heading">
-						<div class="inline-icon">
-							<hr/><hr/><hr/><hr/><hr/>
-						</div>
-						<span class="inline-icon heading-width">
-							<span class="heading-text">Empleado</span>
-						</span>
-						<div class="inline-icon">
-							<hr/><hr/><hr/><hr/><hr/>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-                            <div class="col-lg-12">
-                                
-                                 <div align="center">
-                                     <h3>Ingrese Cedula Empleado</h3>
-                                        <input style="background-color:teal" type="text" ng-model="empleado" size="10" />
-
-                                        <br><br>
-                                        <button class="btn btn-primary filter active" ng-click="loginEmpleado()">Entrar</button>
-
-                                        <br><br>
-                                        Empleado: {{empleado.nombre}}
-                                        
-                                        
-                                    </div>
-                                
-
-                                <div class="text-center">
-                                    <div class="page-scroll menu-icon">
-                                        <a href="#services">
-                                            <i class="fa fa-angle-down fa-lg fa-border"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-			</div>
-		</div>
-	</section>
-	 
-	<section class="grey-area milestones">
-		<h2 class="main_heading animatezoomin">Empleados</h2>
-		
-			<div class="gap-50"></div>
-			<div class="container countup">
-				<div class="row">
-					<div class="col-sm-3">
-						<i class="fa fa-user fa-5x"></i>
-						<h2 id="counting_elem1">2,967 </h2>
-						<h4>Satisfied Patients </h4>
-						
-						
-					</div>
-					<div class="col-sm-3">
-						<i class="fa fa-rocket fa-5x"></i>
-						<h2 id="counting_elem2">987</h2>
-						<h4>Successfull Surgeries</h4>
-						
-						
-					</div>
-					<div class="col-sm-3">
-						<i class="fa fa-clock-o fa-5x"></i>
-						<h2 id="counting_elem3">25,890</h2>
-						<h4>Work Hours</h4>
-						
-						
-					</div>
-					<div class="col-sm-3">
-						<i class="fa fa-users fa-5x"></i>
-						<h2 id="counting_elem4">30</h2>
-						<h4>Spacialist Doctors</h4>
-						
-						
-					</div>
-				</div>
-				
-			</div>
-	</section>
-    
-    
-
-    
-    
-    
-    
-    
-	<section class="gallery" id="gallery">
-        <div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center animateup">
-					<div class="inline-icons-text section-heading">
-						<div class="inline-icon">
-							<hr/><hr/><hr/><hr/><hr/>
-						</div>
-						<span class="inline-icon heading-width">
-							<span class="heading-text">Orden Compra</span>
-						</span>
-						<div class="inline-icon">
-							<hr/><hr/><hr/><hr/><hr/>
-						</div>
-					</div>
-				</div>
-				
-                           
-                            
-                            <div class="row" >
-                            
-                            <h3>Consulta</h3>
-                            <p>!!!Para poder consultar debe autenticarse como empleado!!!</p>
-                                <p>Consulte los medicamentos segun el numero de unidades en el inventario</p>
-                                
-                                        
-                                        <p>Seleccione las unidades   
-                                            <select ng-model="selectedValue" ng-options="val for val in getNumeroUnidades()">
-                                                <option value="">Unidades</option>
-                                            </select>
-                                            
-                                        </p>
-                                          
-                                       
-                                        <button ng-if="autenticar!==-1" class="btn btn-primary filter active" ng-click="cargarDetalleInventarioPorCantidad()">Buscar</button> 
-                                        <br><br>
-                                        
-                                         <h3>Seleccion</h3>
-                                        <p>Seleccione los medicamentos que desea comprar</p>
-                                        
-                                        <table border="2px"  class="table table-striped">
-                                            <thead>
-                                <tr>
-                                   <th> Id Medicamento </th>
-                                   <th> Nombre </th>
-                                    <th> Cantidad Actual</th>    
-                                    
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="x in detallesInventario" ng-click="setSelectedMedicamentoCotizar(x.medicamentosPorProveedor.medicamentos.idMedicamentos)" >
-                                    <!--ng-if="prod.epsafilidas.idEps==3 && prod.estado=='aprobado'" -->
-                                    <td scope="col"> {{x.medicamentosPorProveedor.medicamentos.idMedicamentos}}</td>
-                                    <td scope="col"> {{x.medicamentosPorProveedor.medicamentos.nombre}}</td>
-                                    <td scope="col"> {{x.cantidad}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                                        <button center-align class="btn btn-primary filter active" value="OK" ng-click="addToSelectedMedicamentosCotizar()">Seleccionar</button>
-                                        <br><br>
-                                    <h3>Productos Seleccionados</h3>
-                        <p> Productos  seleccionados a comprar:</p>
-                    <table border="2px"  class="table table-striped">
-                        <thead>
-                            <tr>
-                                 <th>IdMedicamento</th>
-                                <th>Medicamento</th>
-                                <th>Descripcion</th>                            
-                            </tr>
-                        </thead>
-                      
-                        <tbody>
-                            <tr ng-repeat="prod in selectedMedicamentosCotizar"  >
-                                <td>{{ prod.idMedicamentos}}</td>
-                                <td>{{ prod.nombre}}</td>
-                                <td>{{ prod.descripcion}}</td>
-                            </tr>
-                        </tbody>
-                    </table> 
-                        <p>Seleccione el numero de unidades a Comprar</p>
-                                        <p>
-                                            <select ng-model="selectedValueUnidades" ng-options="val for val in getNumeroUnidadesAComprar()">
-                                                <option value="">Unidades A Comprar</option>
-                                            </select>
-                        </p>
-                    <p>Numero de unidades seleccionadas: {{selectedValueUnidades}}</p>
-                    <button center-align class="btn btn-primary filter active" value="OK" ng-click="crearOrdenCompra()">Generar Orden De comprar</button>
-                       </div>  
-                            
-                            
-				
-			</div>
-		</div>
-    </section>
-
-    <section class="contact" id="contact">
-        <div class="container">
-			<div class="text-center animateup">
-				<div class="inline-icons-text section-heading">
-					<div class="inline-icon">
-						<hr/><hr/><hr/><hr/><hr/>
-					</div>
-					<span class="inline-icon heading-width">
-						<span class="heading-text">Contact Us</span>
-					</span>
-					<div class="inline-icon">
-						<hr/><hr/><hr/><hr/><hr/>
-					</div>
-				</div>
-			</div>
-			
-			<div class="gap-50"></div>
-			<h3 class="text-center">We Are Ready To Work With You</h3>
-            <div class="row">
-                <div class="col-md-7 animateright">
-                    <form role="form">
-                        <div class="form-group input-group col-xs-12 floating-label-form-group">
-							<span class="input-group-addon"> <i class="fa fa-user fa-lg"></i> </span>
-
-							<label for="name">Name</label>
-							
-							<input class="form-control" type="text" name="name" id="name" placeholder="Name">
-						</div>
-                        <div class="form-group input-group col-xs-12 floating-label-form-group">
-							<span class="input-group-addon"> <i class="fa fa-envelope-o fa-lg"></i> </span>
-							<label for="email">Email Address</label>
-							<input class="form-control" type="email" name="email" id="email" placeholder="Email Address">
-						</div>
-                        <div class="form-group input-group col-xs-12 floating-label-form-group message-addon">
-							<span class="input-group-addon"> <i class="fa fa-pencil-square-o fa-lg"></i> </span>
-							<label for="message">Message</label>
-							<textarea placeholder="Message" class="form-control" name="message" id="message" rows="5"></textarea>
-						</div>
-                       
-                        <br>
-                        <div class="form-group col-xs-12">
-							<button type="submit" class="btn btn-default btn-lg">Send</button>
-						</div>
-                       
-                    </form>
-                </div>
-				<div class="col-md-5 animateleft contact-sidebar">
-					<div class="inline-icons-text">
-						<div class="inline-icon">
-							<div class="btn-social btn-outline"><i class="fa fa-fw fa-map-marker"></i>
-							</div>
-						</div>
-						<div class="inline-icon">
-							<div class="marker">728 F Block Gulshan Ravi Lahore, Pakistan</div>
-							
-						</div>
-					</div>
-					<div class="inline-icons-text">
-						<div class="inline-icon">
-							<div class="btn-social btn-outline"><i class="fa fa-fw fa-envelope"></i>
-							</div>
-						</div>
-						<div class="inline-icon">
-							<div class="marker">Themifycloud@gmail.com</div>
-							
-						</div>
-					</div>
-					<div class="inline-icons-text">
-						<div class="inline-icon">
-							<div class="btn-social btn-outline"><i class="fa fa-fw fa-phone"></i>
-							</div>							
-						</div>
-						<div class="inline-icon">
-							<div class="marker">+923234392424</div>
-							
-						</div>
-					</div>
                 </div>
             </div>
         </div>
-		
-	</section>
-	
-    
-	
+    </footer>
 
-    
 </div>
-    <!-- gallery Modals -->
+  
+ 
     
-	
-	
+    
+
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.isotope.min.js"></script>
@@ -699,18 +130,10 @@
 	<script src="js/jquery.flexslider-min.js"></script>
 	<script src="js/jquery.knob.js"></script>
     <script src="js/countUp.min.js"></script>
-    	
-	<script src="js/site.js"></script>
+  
 	
 
 
 </body>
 
 </html>
-
-
-
-
-
-
-

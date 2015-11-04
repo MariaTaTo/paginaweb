@@ -3,7 +3,7 @@
 
     app.service('IPSRestAPI', function ($http) {
         
-        this.pos =function(paciente,total){
+         this.pos =function(paciente,total){
                 $http.post('rest/pedidos' , {"pacientes":paciente,"fechaLlegada":"2015-03-03","direccion":"Cra 18 # 5-15"}).
                         success(function(){
                                       alert('Felicidades'+paciente.nombre+' su pedido fue creado exitosamente y tiene un costo de'+total);
@@ -11,6 +11,7 @@
                     alert("NOOOOO");
                 });
         }; 
+        
         
        this.pacientesRequestPromise = function () {            
             return $http({
@@ -100,7 +101,7 @@
         this.detalleOrdenCompraRequestPromise = function(){
           return $http({
               method : 'GET',
-              url: 'rest/detalleOrdenCompra'
+              url: 'rest/detallesOrdenesCompra'
           });  
         };
         
@@ -109,35 +110,56 @@
             return $http({
                 
               method : 'GET',
-              url: 'rest/detalleOrdenCompra/'+id
+              url: 'rest/detallesOrdenesCompra/'+id
             });
         };
         
-        this.getOrdenCompra= function(id){
+        this.getDetalleOrdenCompra= function(id){
           
-            return $http.get('http://localhost:8080/intento1/rest/detalleOrdenCompra/'+id);
+            return $http({
+                
+              method : 'GET',
+              url: 'rest/detallesOrdenesCompra/'+id
+            });
+            
+            
+          
         };
         
+        this.getMedicamentoProveedor = function(id){
+            
+            return $http({
+                
+              method : 'GET',
+              url: 'rest/medicamentospp/'+id
+            });
+            
+           
+            
+        };
+        
+        
+        
+          
         this.getAutorizacionByPaciente = function(id){
-            return $http.get('http://localhost:8080/intento1/rest/autorizaciones/'+id);
-        }; 
-        
-        this.getConsultarAutorizacion = function(){
-            return $http.get('http://localhost:8080/intento1/rest/autorizaciones/');
+            
+            return $http({
+                
+              method : 'GET',
+              url: 'rest/autorizaciones/'+id
+            });
         };
         
-        this.getConsultarDespacho= function(){
-            return $http.get('http://localhost:8080/intento1/rest/despachos/');
+       
+    
+        this.getDespachoByPaciente = function(id){
+            
+            return $http({
+                
+              method : 'GET',
+              url: 'rest/despachos/'+id
+            });
         };
-        
-        this.getConsultarDespacho= function(){
-            return $http.get('http://localhost:8080/intento1/rest/despachos/');
-        };
-        
-        
-       this.getDespachoByPaciente = function(id){
-            return $http.get('http://localhost:8080/intento1/rest/despachos/'+id);
-        }; 
         
         
         //////////////////////////////////////////////////////////////////////////
@@ -220,6 +242,15 @@
             });            
         };
         
+        this.medicamentoAumento =function(medicamentosPorProveedor,cantidad){
+           
+             $http.post('rest/detalleInventario' , {"medicamentosPorProveedor":medicamentosPorProveedor,"cantidad":cantidad, "idInventario":1}).
+                        success(function(){
+                                      alert('DetalleInventario Realizada');
+                }).error(function(){
+                    alert('DetalleInventario Realizada');
+                });
+            };
         
         
         

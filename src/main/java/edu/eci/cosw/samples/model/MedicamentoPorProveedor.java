@@ -18,6 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="MedicamentosPorProveedor"
+    ,catalog="cosw2"
 )
 public class MedicamentoPorProveedor  implements java.io.Serializable {
 
@@ -55,7 +56,6 @@ public class MedicamentoPorProveedor  implements java.io.Serializable {
    
      @Id 
 
-    
     @Column(name="idMedicamentosProvedor", unique=true, nullable=false)
     public int getIdMedicamentosProvedor() {
         return this.idMedicamentosProvedor;
