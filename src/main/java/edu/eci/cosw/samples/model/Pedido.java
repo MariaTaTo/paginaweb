@@ -48,6 +48,15 @@ public class Pedido  implements java.io.Serializable {
        this.detallesPedidos = detallesPedidos;
        this.despachoses = despachoses;
     }
+    
+     public Pedido(Paciente pacientes, Date fechaLlegada, String direccion) {
+       this.pacientes = pacientes;
+       this.fechaLlegada = fechaLlegada;
+       this.direccion = direccion;
+      
+      
+    }
+   
    
      @Id @GeneratedValue(strategy=IDENTITY)
 
@@ -91,7 +100,9 @@ public class Pedido  implements java.io.Serializable {
         this.direccion = direccion;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="pedidos")
+    //@OneToMany(fetch=FetchType.LAZY, mappedBy="pedidos")
+    @OneToMany(fetch=FetchType.LAZY)
+    @JoinColumn(name="Pedidos_idPedidos", nullable=false)
     public Set<DetallePedido> getDetallesPedidos() {
         return this.detallesPedidos;
     }

@@ -23,20 +23,20 @@ public class DetallePedido  implements java.io.Serializable {
 
      private Integer idDetalle;
      private MedicamentoPorProveedor medicamentosPorProveedor;
-     private Pedido pedidos;
+     //private Pedido pedidos;
      private Integer cantidad;
 
     public DetallePedido() {
     }
 
 	
-    public DetallePedido(MedicamentoPorProveedor medicamentosPorProveedor, Pedido pedidos) {
+    public DetallePedido(MedicamentoPorProveedor medicamentosPorProveedor,Pedido pedidos) {
         this.medicamentosPorProveedor = medicamentosPorProveedor;
-        this.pedidos = pedidos;
+       // this.pedidos = pedidos;
     }
-    public DetallePedido(MedicamentoPorProveedor medicamentosPorProveedor, Pedido pedidos, Integer cantidad) {
+    public DetallePedido(MedicamentoPorProveedor medicamentosPorProveedor/*, Pedido pedidos*/, Integer cantidad) {
        this.medicamentosPorProveedor = medicamentosPorProveedor;
-       this.pedidos = pedidos;
+      //this.pedidos = pedidos;
        this.cantidad = cantidad;
     }
    
@@ -62,15 +62,15 @@ public class DetallePedido  implements java.io.Serializable {
         this.medicamentosPorProveedor = medicamentosPorProveedor;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="Pedidos_idPedidos", nullable=false)
-    public Pedido getPedidos() {
-        return this.pedidos;
-    }
+//@ManyToOne(fetch=FetchType.LAZY)
+ //   @JoinColumn(name="Pedidos_idPedidos", nullable=false)
+   // public Pedido getPedidos() {
+   //     return this.pedidos;
+    //}
     
-    public void setPedidos(Pedido pedidos) {
-        this.pedidos = pedidos;
-    }
+    //public void setPedidos(Pedido pedidos) {
+     //   this.pedidos = pedidos;
+    //}
 
     
     @Column(name="cantidad")
