@@ -142,7 +142,7 @@ public class OrdenCompraTest {
         DetalleInventario di3 = new DetalleInventario(i, mp2, 5);
         DetalleInventario di4 = new DetalleInventario(i, mp3, 5);
 
-         c.addNewEps(ea);
+         /*c.addNewEps(ea);
          c.addNewPaciente(pac);
          c.addNewProveedor(p);
          c.addNewProveedor(p2);
@@ -159,7 +159,7 @@ public class OrdenCompraTest {
          c.addNewDetalleInventario(di2);
          c.addNewDetalleInventario(di3);
          c.addNewDetalleInventario(di4);
-         
+         */
     }
 
     /**
