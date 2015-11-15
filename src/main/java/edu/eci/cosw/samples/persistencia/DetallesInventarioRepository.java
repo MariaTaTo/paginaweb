@@ -21,8 +21,12 @@ import org.springframework.data.repository.query.Param;
  */
 public interface DetallesInventarioRepository extends CrudRepository<DetalleInventario, Integer>{
    
-@Query("from DetalleInventario di where di.cantidad= :cantidad  ")
-    public List<DetalleInventario> detallesInventarioPorCantidad(@Param("cantidad") int cantidad);
+//@Query("from DetalleInventario di where di.cantidad= :cantidad  ")
+
+@Query("Select di from DetalleInventario di JOIN di.medicamentosPorProveedor as dip "
+        + "group by dip.medicamentos having sum(di.cantidad)= :cantidad")
+
+    public List<DetalleInventario> detallesInventarioPorCantidad(@Param("cantidad") long cantidad);
 
 }
 

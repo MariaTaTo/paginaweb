@@ -18,7 +18,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="MedicamentosPorProveedor"
-    ,catalog="cosw2"
 )
 public class MedicamentoPorProveedor  implements java.io.Serializable {
 
@@ -42,6 +41,15 @@ public class MedicamentoPorProveedor  implements java.io.Serializable {
         this.medicamentos = medicamentos;
         this.proveedores = proveedores;
     }
+    
+    public MedicamentoPorProveedor(int idMedicamentosProvedor, Medicamento medicamentos, Proveedor proveedores, Integer precio) {
+       this.idMedicamentosProvedor = idMedicamentosProvedor;
+       this.medicamentos = medicamentos;
+       this.proveedores = proveedores;
+       this.precio = precio;
+      
+    }
+    
     public MedicamentoPorProveedor(int idMedicamentosProvedor, Medicamento medicamentos, Proveedor proveedores, Integer precio, Set<Devolucion> devolucioneses, Set<ItemDeFactura> itemsDeFacturas, Set<DetalleOrdenCompra> detallesOrdenesCompras, Set<DetallePedido> detallesPedidos, Set<DetalleInventario> detalleInventarios) {
        this.idMedicamentosProvedor = idMedicamentosProvedor;
        this.medicamentos = medicamentos;
@@ -84,7 +92,6 @@ public class MedicamentoPorProveedor  implements java.io.Serializable {
     public void setProveedores(Proveedor proveedores) {
         this.proveedores = proveedores;
     }
-
     
     @Column(name="Precio")
     public Integer getPrecio() {

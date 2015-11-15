@@ -23,23 +23,23 @@ public class DetalleOrdenCompra  implements java.io.Serializable {
 
      private Integer idDetallesOrdenesCompra;
      private MedicamentoPorProveedor medicamentosPorProveedor;
-     private OrdenCompra ordenesCompra;
+     //private OrdenCompra ordenesCompra;
      private Integer cantidad;
 
     public DetalleOrdenCompra() {
     }
 
 	
-    public DetalleOrdenCompra(MedicamentoPorProveedor medicamentosPorProveedor, OrdenCompra ordenesCompra) {
+    public DetalleOrdenCompra(MedicamentoPorProveedor medicamentosPorProveedor/*, OrdenCompra ordenesCompra*/) {
         this.medicamentosPorProveedor = medicamentosPorProveedor;
-        this.ordenesCompra = ordenesCompra;
+        //this.ordenesCompra = ordenesCompra;
     }
     
    
     
-    public DetalleOrdenCompra(MedicamentoPorProveedor medicamentosPorProveedor, OrdenCompra ordenesCompra, Integer cantidad) {
+    public DetalleOrdenCompra(MedicamentoPorProveedor medicamentosPorProveedor/*, OrdenCompra ordenesCompra*/, Integer cantidad) {
        this.medicamentosPorProveedor = medicamentosPorProveedor;
-       this.ordenesCompra = ordenesCompra;
+       //this.ordenesCompra = ordenesCompra;
        this.cantidad = cantidad;
     }
    
@@ -65,7 +65,7 @@ public class DetalleOrdenCompra  implements java.io.Serializable {
         this.medicamentosPorProveedor = medicamentosPorProveedor;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+/*@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="idOrdenesCompra", nullable=false)
     public OrdenCompra getOrdenesCompra() {
         return this.ordenesCompra;
@@ -74,7 +74,7 @@ public class DetalleOrdenCompra  implements java.io.Serializable {
     public void setOrdenesCompra(OrdenCompra ordenesCompra) {
         this.ordenesCompra = ordenesCompra;
     }
-
+*/
     
     @Column(name="cantidad")
     public Integer getCantidad() {

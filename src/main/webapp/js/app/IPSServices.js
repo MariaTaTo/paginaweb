@@ -177,29 +177,21 @@
             });            
         };
         ///////////////////////////////////////////////////////////////////
-          this.posCotizar =function(medicamento,proveedor,cantidad,precio){
-           
-             $http.post('rest/cotizaciones' , {"medicamentos":medicamento,"proveedores":proveedor,"cantidad":cantidad,"precio":precio}).
+         
+            
+            this.posDetalleOrdenCompra =function(medicamentosPorProveedor,cantidad){
+            alert('Entro al post '+medicamentosPorProveedor.idMedicamentosProvedor);
+             $http.post('rest/detallesOrdenesCompra' , {"medicamentosPorProveedor":medicamentosPorProveedor,"cantidad":cantidad}).
                         success(function(){
-                                      alert('Cotizacion Realizada');
+                                      alert('DetalleOrdenDeCompra Realizadan=)');
                 }).error(function(){
-                    alert("NOOOOO");
+                    alert("Detalle Orden Compra fallida =(");
                 });
             };
             
-            this.posDetalleOrdenCompra =function(medicamentosPorProveedor,ordenesCompra,cantidad){
+             this.posGenerarOrdenCompra =function(fecha,detallesOrdenesCompras){
            
-             $http.post('rest/detallesOrdenesCompra' , {"medicamentosPorProveedor":medicamentosPorProveedor,"ordenesCompra":ordenesCompra,"cantidad":cantidad}).
-                        success(function(){
-                                      alert('DetalleOrdenDeCompra Realizada');
-                }).error(function(){
-                    alert("Detalle Orden Compra fallida");
-                });
-            };
-            
-             this.posGenerarOrdenCompra =function(){
-           
-             $http.post('rest/ordenesCompra' , {"fecha":"2015-10-23"}).
+             $http.post('rest/ordenesCompra' , {"fecha":fecha,"detallesOrdenesCompras":detallesOrdenesCompras}).
                         success(function(){
                                       alert('Orden De Compra Realizada exitosamente');
                 }).error(function(){

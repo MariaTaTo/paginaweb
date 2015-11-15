@@ -23,7 +23,7 @@ import edu.eci.cosw.samples.model.Proveedor;
 import edu.eci.cosw.samples.persistencia.AutorizacionRepository;
 import edu.eci.cosw.samples.persistencia.CotizacionesRepository;
 import edu.eci.cosw.samples.persistencia.DespachoRepository;
-import edu.eci.cosw.samples.persistencia.DetalleOrdenConprRepository;
+
 import edu.eci.cosw.samples.persistencia.DetallesInventarioRepository;
 import edu.eci.cosw.samples.persistencia.DetallesOrdenesCompraRepository;
 import edu.eci.cosw.samples.persistencia.DetallesPedidosRepository;
@@ -60,9 +60,7 @@ public class Clase {
     @Autowired
     MedicamentoPPRepository mppr;
     
-    @Autowired
-    DetalleOrdenConprRepository doc;
-    
+   
     @Autowired
     MedicamentoRepository mr;
     
@@ -99,6 +97,9 @@ public class Clase {
     @Autowired
     DespachoRepository des;
 
+    
+   
+    
     public void addNewEps(Epsafilida eps){
         epsr.save(eps);
     }
@@ -127,18 +128,18 @@ public class Clase {
         par.save(pa);
     }
     
-    public DetalleOrdenCompra consultarOrden (int id) {
-    
-        DetalleOrdenCompra p = doc.findOne(id);
-        return p;
+     public void addNewMensajero(Mensajero m) {
+        menr.save(m);
     }
-    
-    public Iterable<DetalleOrdenCompra> consultarOrdenes(){
-        
-        Iterable<DetalleOrdenCompra> p = doc.findAll();
-        return p;
+     
+      public void addNewInventario(Inventario i) {
+        invr.save(i);
     }
-       
+      
+      public void addNewDetalleInventario(DetalleInventario di) {
+        dir.save(di);
+    }
+     
     public Pedido consultarPedido(int id) {
         Pedido p= pr.findOne(id);
         return p;
@@ -243,7 +244,12 @@ public class Clase {
     /*========================================================================
                               ORDEN DE COMPRA
     ========================================================================*/
-    public Mensajero consultarEmpleado(int id) {
+     public void addNewDetalleOrdenCompra(DetalleOrdenCompra dop) {
+       
+        docr.save(dop);
+    }
+     
+     public Mensajero consultarEmpleado(int id) {
         Mensajero p=menr.findOne(id);
         return p;
     }
@@ -327,9 +333,23 @@ public class Clase {
          ocr.save(o);
          return o;
     }
-      public DetalleOrdenCompra CrearDetalleOrdenDeCompra(MedicamentoPorProveedor medicamentosPorProveedor, OrdenCompra ordenesCompra)
+     
+      public OrdenCompra CrearOrdenDeCompra(Date fecha,Set<DetalleOrdenCompra> detalles)
      {
-        DetalleOrdenCompra doc= new DetalleOrdenCompra(medicamentosPorProveedor,ordenesCompra);
+        OrdenCompra o= new OrdenCompra(fecha,detalles);
+         ocr.save(o);
+         return o;
+    }
+      
+      public DetalleOrdenCompra CrearDetalleOrdenDeCompra(MedicamentoPorProveedor medicamentosPorProveedor)
+     {
+        DetalleOrdenCompra doc= new DetalleOrdenCompra(medicamentosPorProveedor);
+        docr.save(doc);
+        return doc;
+    }
+      public DetalleOrdenCompra CrearDetalleOrdenDeCompras(MedicamentoPorProveedor medicamentosPorProveedor, int cantidad)
+     {
+        DetalleOrdenCompra doc= new DetalleOrdenCompra(medicamentosPorProveedor,cantidad);
         docr.save(doc);
         return doc;
     }

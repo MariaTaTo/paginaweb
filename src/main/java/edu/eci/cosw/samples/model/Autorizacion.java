@@ -24,7 +24,6 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="Autorizaciones"
-    ,catalog="cosw2"
 )
 public class Autorizacion  implements java.io.Serializable {
 
@@ -48,6 +47,15 @@ public class Autorizacion  implements java.io.Serializable {
        this.fechaExpedicion = fechaExpedicion;
        this.fechaVencimiento = fechaVencimiento;
        this.estado = estado;
+    }
+     public Autorizacion(Epsafilida epsafilidas, Date fechaExpedicion, Date fechaVencimiento, String estado,Paciente pacientes) {
+       this.epsafilidas = epsafilidas;
+       this.fechaExpedicion = fechaExpedicion;
+       this.fechaVencimiento = fechaVencimiento;
+       this.estado = estado;
+       this.pacientes=pacientes;
+               
+               
     }
    
    
