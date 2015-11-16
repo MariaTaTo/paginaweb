@@ -28,10 +28,13 @@ public class Paciente  implements java.io.Serializable {
      private Integer telefono;
      private String direccion;
      private Set<Pedido> pedidoses = new HashSet<Pedido>(0);
+     private Biometrico biometrico;
 
+   
+
+    
     public Paciente() {
     }
-
 	
     public Paciente(int idPacientes, Epsafilida epsafilidas) {
         this.idPacientes = idPacientes;
@@ -115,6 +118,16 @@ public class Paciente  implements java.io.Serializable {
     
     public void setPedidoses(Set<Pedido> pedidoses) {
         this.pedidoses = pedidoses;
+    }
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="Biometrico")
+    public Biometrico getBiometrico() {
+        return biometrico;
+    }
+
+    public void setBiometrico(Biometrico biometrico) {
+        this.biometrico = biometrico;
     }
 
 

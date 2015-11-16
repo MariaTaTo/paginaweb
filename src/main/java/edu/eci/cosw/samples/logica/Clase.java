@@ -6,6 +6,7 @@
 package edu.eci.cosw.samples.logica;
 
 import edu.eci.cosw.samples.model.Autorizacion;
+import edu.eci.cosw.samples.model.Biometrico;
 import edu.eci.cosw.samples.model.Cotizacion;
 import edu.eci.cosw.samples.model.Despacho;
 import edu.eci.cosw.samples.model.DetalleInventario;
@@ -21,6 +22,7 @@ import edu.eci.cosw.samples.model.Paciente;
 import edu.eci.cosw.samples.model.Pedido;
 import edu.eci.cosw.samples.model.Proveedor;
 import edu.eci.cosw.samples.persistencia.AutorizacionRepository;
+import edu.eci.cosw.samples.persistencia.BiometricoRepository;
 import edu.eci.cosw.samples.persistencia.CotizacionesRepository;
 import edu.eci.cosw.samples.persistencia.DespachoRepository;
 
@@ -96,6 +98,9 @@ public class Clase {
     
     @Autowired
     DespachoRepository des;
+    
+    @Autowired
+    BiometricoRepository bios;
 
     
    
@@ -374,6 +379,13 @@ public class Clase {
         return dp;
     }
 
+    public Paciente consultarPacienteCodBiometrico(String codBiometrico) {
+        return par.searchCodBiometrico(codBiometrico);
+    }
+
+    public Biometrico consultarBiometricoPorCodigo(String codBiometrico) {
+       return bios.biometricoPorCodigo(codBiometrico);
+    }
     
 }
 

@@ -9,6 +9,7 @@
     <property name="hibernate.show_sql">true</property>
     
     <mapping class="edu.eci.cosw.samples.model.Autorizacion"/>
+    <mapping class="edu.eci.cosw.samples.model.Biometrico"/>
     <mapping class="edu.eci.cosw.samples.model.Contrato"/>
     <mapping class="edu.eci.cosw.samples.model.Cotizacion"/>
     <mapping class="edu.eci.cosw.samples.model.Despacho"/>

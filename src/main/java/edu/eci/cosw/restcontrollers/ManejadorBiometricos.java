@@ -6,6 +6,7 @@
 package edu.eci.cosw.restcontrollers;
 
 import edu.eci.cosw.samples.logica.Clase;
+import edu.eci.cosw.samples.model.Biometrico;
 import edu.eci.cosw.samples.model.Medicamento;
 import edu.eci.cosw.samples.model.MedicamentoPorProveedor;
 import edu.eci.cosw.samples.model.Paciente;
@@ -24,34 +25,24 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("/pacientes")
-public class ManejadorPacientes {
+@RequestMapping("/biometricos")
+public class ManejadorBiometricos {
     @Autowired
     Clase c;
 
-   @RequestMapping(value="/{id}",method = RequestMethod.GET)
-     public Paciente consped(@PathVariable int id) throws OperationFailedException{
-        Paciente p=c.consultarPaciente(id);
+    @RequestMapping(value="/{codBiometrico}",method = RequestMethod.GET)
+     public Biometrico conspedPorCodBiometrico(@PathVariable String codBiometrico) throws OperationFailedException{
+        Biometrico b=c.consultarBiometricoPorCodigo(codBiometrico);
         
-        if(p==null){
+        if(b==null){
             throw new OperationFailedException();
         }
-        return p;
+        return b;
      }
      
-     @RequestMapping(method = RequestMethod.GET)        
-    public List<Paciente> allPacientes() {        
-        List<Paciente> m=new ArrayList<Paciente>();
-        m=(List<Paciente>) c.consultarPacientes();
-        return m;
-    }
-    
-     @RequestMapping(value="/biometricos/{codBiometrico}",method = RequestMethod.GET)
-     public Paciente conspedCodbometrico(@PathVariable String  codBiometrico) throws OperationFailedException{
-        Paciente p=c.consultarPacienteCodBiometrico(codBiometrico);
-       return p; 
+     
        
-     }
+     
     
     
     

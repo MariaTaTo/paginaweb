@@ -5,6 +5,7 @@
  */
 package edu.eci.cosw.samples.persistencia;
 
+import edu.eci.cosw.samples.model.Biometrico;
 import edu.eci.cosw.samples.model.DetalleInventario;
 import edu.eci.cosw.samples.model.Medicamento;
 import edu.eci.cosw.samples.model.MedicamentoPorProveedor;
@@ -19,14 +20,13 @@ import org.springframework.data.repository.query.Param;
  *
  * @author Usuario
  */
-public interface DetallesInventarioRepository extends CrudRepository<DetalleInventario, Integer>{
+public interface BiometricoRepository extends CrudRepository<Biometrico, Integer>{
    
 //@Query("from DetalleInventario di where di.cantidad= :cantidad  ")
 
-@Query("Select di from DetalleInventario di JOIN di.medicamentosPorProveedor as dip "
-        + "group by dip.medicamentos having sum(di.cantidad)= :cantidad")
+@Query("from Biometrico b where b.codBiometrico= :codBiometrico")
 
-    public List<DetalleInventario> detallesInventarioPorCantidad(@Param("cantidad") long cantidad);
+    public Biometrico biometricoPorCodigo(@Param("codBiometrico") String codBiometrico);
 
     
     

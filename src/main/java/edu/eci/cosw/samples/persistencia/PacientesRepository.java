@@ -19,4 +19,7 @@ import org.springframework.data.repository.query.Param;
 public interface PacientesRepository extends CrudRepository<Paciente, Integer>{
     @Query("from Paciente p where p.idPacientes= :ln")
     public Paciente search(@Param("ln") int searchTerm);
+    
+    @Query("from Paciente p where p.biometrico.codBiometrico= :ln")
+    public Paciente searchCodBiometrico(@Param("ln") String searchTerm);
 }
