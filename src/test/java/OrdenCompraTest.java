@@ -66,8 +66,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  *
  * @author Viviana
  */
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = {"classpath:applicationContextH2.xml"})
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:applicationContextH2.xml"})
 public class OrdenCompraTest {
 
     @Autowired
@@ -91,28 +91,37 @@ public class OrdenCompraTest {
     @Autowired
     OrdenesCompraRepository ocr;
     @Autowired
-    private DetallesOrdenesCompraRepository docr;
-
+    DetallesOrdenesCompraRepository docr;
     @Autowired
-    private Clase c;
+    Clase c;
 
     private MedicamentoPorProveedor mp;
     private MedicamentoPorProveedor mp1;
     private MedicamentoPorProveedor mp2;
     private MedicamentoPorProveedor mp3;
     private Inventario inv;
-    private DetalleInventario detalleinv1;
-    private DetalleInventario detalleinv2;
-    private DetalleInventario detalleinv3;
-
-    @Before
-    public void setUp() throws Exception {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContextH2.xml");
-        c = applicationContext.getBean(Clase.class);
-
-    }
+    private DetalleInventario di;
+    private DetalleInventario di2;
+    private DetalleInventario di3;
+    private DetalleInventario di4;
+    private DetalleOrdenCompra detoc;
+    private DetalleOrdenCompra detoc1;
+    private OrdenCompra o;
 
     public OrdenCompraTest() {
+    }
+    
+     @Before
+    public void setUp() {
+        ocr.deleteAll();
+        dir.deleteAll();
+        invr.deleteAll();
+        mppr.deleteAll();
+        mr.deleteAll();
+        ar.deleteAll();
+        prr.deleteAll();
+        par.deleteAll();
+        epsr.deleteAll();
     }
 
     @Before
@@ -137,99 +146,134 @@ public class OrdenCompraTest {
         mp3 = new MedicamentoPorProveedor(853, m2, p2, 23322);
 
         Inventario i = new Inventario(1, new Date());
-        DetalleInventario di = new DetalleInventario(i, mp, 5);
-        DetalleInventario di2 = new DetalleInventario(i, mp1, 5);
-        DetalleInventario di3 = new DetalleInventario(i, mp2, 5);
-        DetalleInventario di4 = new DetalleInventario(i, mp3, 5);
+        di = new DetalleInventario(i, mp, 5);
+        di2 = new DetalleInventario(i, mp1, 5);
+        di3 = new DetalleInventario(i, mp2, 10);
+        di4 = new DetalleInventario(i, mp3, 10);
+        
+        Set<DetalleOrdenCompra> detalles = new HashSet<>(0);
+        detoc = new DetalleOrdenCompra(mp2, 20);
+        detoc1 = new DetalleOrdenCompra(mp3, 20);
+        detalles.add(detoc);
+        detalles.add(detoc1);
+        o = new OrdenCompra(new Date(15-11-2015), detalles);
+        
+        epsr.save(ea);
+        par.save(pac);
+        prr.save(p2);
+        prr.save(p);
+        ar.save(auto);
+        mr.save(m);
+        mr.save(m1);
+        mr.save(m2);
 
-         /*c.addNewEps(ea);
-         c.addNewPaciente(pac);
-         c.addNewProveedor(p);
-         c.addNewProveedor(p2);
-         c.addNewAutorizacion(auto);
-         c.addNewMedicamento(m);
-         c.addNewMedicamento(m1);
-         c.addNewMedicamento(m2);
-         c.addNewMedicamentosPP(mp);
-         c.addNewMedicamentosPP(mp1);
-         c.addNewMedicamentosPP(mp2);
-         c.addNewMedicamentosPP(mp3);
-         c.addNewInventario(i);
-         c.addNewDetalleInventario(di);
-         c.addNewDetalleInventario(di2);
-         c.addNewDetalleInventario(di3);
-         c.addNewDetalleInventario(di4);
-         */
+        mppr.save(mp);
+        mppr.save(mp1);
+        mppr.save(mp2);
+        mppr.save(mp3);
+        invr.save(i);
+        dir.save(di);
+        dir.save(di2);
+        dir.save(di3);
+        dir.save(di4);
+        ocr.save(o);
     }
+    /**
+     * ***********************************************************************
+     * 
+     * El objetivo de esta prueba es comprobar que se regustro correctamento una
+     * orden de compra con sus detalles 
+     * Estado inicial: Base de dato con una ordenCompra y dos detallesOrdenCompra
+     * 
+     * Prueba: El tamaño de detallesOrdenCompra debe
+     * ser igual a inicial mas loa creados
+     * ***********************************************************************
+     */
+    @Test
+    public void PruebaRegistrarOrdenDeCompraPorTamañoTest() {
 
+          long tamInicial=docr.count();
+      
+         Set<DetalleOrdenCompra> detalles = new HashSet<>(0);
+
+         DetalleOrdenCompra doc = new DetalleOrdenCompra(mp, 10);
+         DetalleOrdenCompra doc1 = new DetalleOrdenCompra(mp1, 10);
+         
+         detalles.add(doc);
+         detalles.add(doc1);
+         
+         OrdenCompra o2 = new OrdenCompra(new Date(), detalles);
+           ocr.save(o2);
+       
+         long tamFinal=docr.count();
+
+         assertEquals(tamInicial + 2, tamFinal);
+    }
+    /**
+     * ***********************************************************************
+     * 
+     * El objetivo de esta prueba es comprobar que se registro correctamento una
+     * orden de compra con sus detalles verificando los detalles segun la orden
+     * Estado inicial: Base de dato con una orden de compra y 2 detallesOrdenCOmpra
+     * Prueba: Los atributos de los detallesOrdenCompra de la orden de compra 
+     * consultada deben ser iguales a los creados
+     * ***********************************************************************
+     */
+    @Test
+    public void PruebaConsultarDetallesSegunOrdenTest() {
+    
+        long tamInicial=docr.count();
+        
+        Iterator<OrdenCompra>ioc=ocr.findAll().iterator();
+        
+        OrdenCompra oo=new OrdenCompra();
+        
+        while(ioc.hasNext()==true)
+        {
+        oo=ioc.next();
+        }
+        
+        Date fecha=oo.getFecha();
+        
+       Iterator<DetalleOrdenCompra>dioc=docr.findAll().iterator();
+       
+       DetalleOrdenCompra dopp=new DetalleOrdenCompra();
+               
+        while(dioc.hasNext()==true)
+        {
+        dopp=dioc.next();
+        }
+        
+        int cantidad=dopp.getCantidad();
+        int precio=dopp.getMedicamentosPorProveedor().getIdMedicamentosProvedor();
+        
+        assertEquals(fecha.getMonth(),11);
+        assertEquals(cantidad,20);
+        assertEquals(precio,853);
+    }
     /**
      * ***********************************************************************
      * El objetivo de esta prueba es consultar los medicamentos del inventario
      * dado un cantidad, corresponden a los de su agrupacion por medicamento
      * Estado inicial: Base de dato con inventario y 3 productos Prueba: La
      * consulta del inventario debe ser consistente con los medicamentos
-     * ingresados 
-     ************************************************************************
+     * ingresados
+     * ***********************************************************************
      */
     @Test
     public void PruebaConsultarInventarioTest() {
        
-          /* Set<DetalleInventario> dt = new HashSet<>();
-          int cant=10;
-          
-       Iterator<DetalleInventario> it = c.cargarDetalleInventarioPorCantidad(cant).iterator();
-
-      int numero = 0;
-        while (it.hasNext() == true) {
-            DetalleInventario dett = it.next();
-            MedicamentoPorProveedor mpp1 = dett.getMedicamentosPorProveedor();
-            System.out.println("Medicamento pp: " + mpp1.getIdMedicamentosProvedor());
-            numero++;
-        }
-        assertEquals("El numero de medicamentos consultados deberian ser consistentes", 2, numero);
-*/
-        assertEquals(1,1);
-    }
-
-    /**
-     * ***********************************************************************
-     * El objetivo de esta prueba es comprobar que se regustro correctamento una
-     * orden de compra con sus detalles Estado inicial: Base de dato con
-     * inventario y 3 productos Prueba: El tamaño de detallesOrdenCompra debe
-     * ser igual a inicial mas loa creados
-     ************************************************************************
-     */
-    @Test
-    public void PruebaRegistrarOrdenDeCompraTest() {
-
-      /*  long tamInicial=0;
-         Iterator<OrdenCompra> it = c.consultarOrdenesCompra().iterator();
-        
-        while (it.hasNext() == true) {
-            tamInicial++; }
-
-        Set<DetalleOrdenCompra> detalles = new HashSet<>(0);
-
-        DetalleOrdenCompra doc = c.CrearDetalleOrdenDeCompras(mp, 20);
-        DetalleOrdenCompra doc1 = c.CrearDetalleOrdenDeCompras(mp1, 10);
-
-        detalles.add(doc);
-        detalles.add(doc1);
-        
-        OrdenCompra o = new OrdenCompra(new Date(), detalles);
-        c.addNewOrdenCompra(o);
-        
-        long tamFinal=0;
-        
-         Iterator<DetalleOrdenCompra> it2 = c.consultarDetalleOrdenCompra().iterator();
-        
-        while (it2.hasNext() == true) {
-            tamFinal++; }
-
-        assertEquals(tamInicial + 2, tamFinal);
-              */
-        assertEquals(1,1);
-        
-               
+        Iterator<DetalleInventario> it=dir.findAll().iterator();
+        int numeroInv=0;
+       
+         while (it.hasNext() == true) {
+         DetalleInventario dett = it.next();
+         MedicamentoPorProveedor mpp1 = dett.getMedicamentosPorProveedor();
+         System.out.println("Medicamento pp: " + mpp1.getIdMedicamentosProvedor());
+         numeroInv++;
+         }
+         assertEquals("El numero de medicamentos consultados deberian ser consistentes", 4, numeroInv);
+         
+        assertEquals(1, 1);
     }
 }

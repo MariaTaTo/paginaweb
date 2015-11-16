@@ -18,7 +18,8 @@
     <jdbc:embedded-database id="dataSource" type="H2">
     </jdbc:embedded-database>
  
-    <context:component-scan base-package="package edu.eci.cosw.samples.logica"/>
+    <context:component-scan base-package="package edu.eci.cosw.samples.model"/>
+      <context:component-scan base-package="package edu.eci.cosw.samples.logica"/>
     <!--<context:component-scan base-package="edu.eci.cosw.springdataintro.components"/>-->
     <jpa:repositories base-package="edu.eci.cosw.samples.persistencia"/>
  
