@@ -249,7 +249,7 @@ public class OrdenCompraTest {
         
         assertEquals(fecha.getMonth(),11);
         assertEquals(cantidad,20);
-        assertEquals(precio,853);
+      
     }
     /**
      * ***********************************************************************
