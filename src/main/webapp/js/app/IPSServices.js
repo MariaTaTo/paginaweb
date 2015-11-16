@@ -3,13 +3,16 @@
 
     app.service('IPSRestAPI', function ($http) {
         
-         this.pos =function(paciente,total){
-                $http.post('rest/pedidos' , {"pacientes":paciente,"fechaLlegada":"2015-03-03","direccion":"Cra 18 # 5-15"}).
+         this.pos =function(paciente,total,detallePedido){
+             
+                $http.post('rest/pedidos' , {"pacientes":paciente,"fechaLlegada":"2015-03-03","direccion":"Cra 18 # 5-15","detallesPedidos":detallePedido}).
                         success(function(){
                                       alert('Felicidades'+paciente.nombre+' su pedido fue creado exitosamente y tiene un costo de'+total);
                 }).error(function(){
                     alert("NOOOOO");
                 });
+                
+                
         }; 
         
         

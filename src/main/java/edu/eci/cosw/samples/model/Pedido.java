@@ -5,6 +5,7 @@ package edu.eci.cosw.samples.model;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -101,7 +102,7 @@ public class Pedido  implements java.io.Serializable {
     }
 
     //@OneToMany(fetch=FetchType.LAZY, mappedBy="pedidos")
-    @OneToMany(fetch=FetchType.LAZY)
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="Pedidos_idPedidos", nullable=false)
     public Set<DetallePedido> getDetallesPedidos() {
         return this.detallesPedidos;

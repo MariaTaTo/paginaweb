@@ -22,29 +22,41 @@
                     //promise success
                     function (response) {
                         $scope.paciente=response.data;
-                        console.log('paciente quedoooo con '+response.data.nombre);
                         $scope.selectedPacientesId = response.data;
                         $scope.Eps=response.data.epsafilidas;
                         $scope.EpsId=response.data.epsafilidas.idEps;
-                        console.log('mirar si esto fincionaaaaaaaaaa'+response.data.epsafilidas.idEps);
-                        console.log('aca que viene : '+$scope.usuario);
+                        
                     },
                     //promise error
                     function (response) {
                          alert('incorrecto');
-                        console.log('viene con id: '+ $scope.usuario);
-                        console.log('Unable tdo get data from REST API:' + response);
+                        
                     }
                 );
             };
+            
+            //$scope.medicamentoProveedor=[];
          $scope.crearPedido = function () {
             
-            IPSRestAPI.pos($scope.paciente,$scope.total);
+         $scope.detalles=[];
+            for (x = 0; x < $scope.selectedMedicamentos.length; x++) {
+               
+               $scope.detallePedido = new DetallePedido($scope.medicamentoProveedor[x],1);
+               $scope.detalles[x]=$scope.detallePedido;
+               
+            }
+            for(t=0;t<$scope.detalles.length;t++){
+                console.log('entro al for'+$scope.detalles[t]);
+                
+            }
+            
+             IPSRestAPI.pos($scope.paciente,$scope.total,$scope.detalles);
             console.log('Shopping kart updated' + JSON.stringify($scope.selectedMedicamentos));
             
          };
         $scope.medicamentos = [];
-                
+        
+               
         $scope.totala = 0;
         
         $scope.total = 0;
@@ -55,7 +67,10 @@
 
         $scope.selectedMedicamentoDetail = null;
 
-        
+        function DetallePedido(medicamentosPorProveedor, cantidad) {
+            this.medicamentosPorProveedor = medicamentosPorProveedor;
+            this.cantidad = cantidad;
+        };
         
         $scope.availableMedicamentosRequestPromise = IPSRestAPI.medicamentosRequestPromise();
 
@@ -69,20 +84,23 @@
         $scope.availableMedicamentosRequestPromise.then(
             //promise success
             function (response) {
-                console.log('acksamdcsdkc'+response.data);
+                
                 $scope.medicamentos = response.data;
             },
             //promise error
                     function (response) {
-                        console.log('11 viene con id: '+ $scope.selectedMedicamentoId);
+                        
                         console.log('Unable to get data from REST API:' + response);
                     }
             );
-
-            $scope.setSelectedMedicamento = function (idpac,precio) {
+            $scope.cont=0;
+            $scope.medicamentoProveedor=[];
+            $scope.setSelectedMedicamento = function (idpac,precio,mpp) {
+                
                 $scope.selectedMedicamentoId = idpac;
                 $scope.totala=precio;
-                console.log('Cuantos precios tiene'+precio);
+                $scope.medicamentoProveedor[$scope.cont]=mpp;
+                $scope.cont++;
                 
 
                 IPSRestAPI.medicamentoByIdRequestPromise(idpac).then(
