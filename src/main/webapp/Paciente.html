@@ -77,50 +77,48 @@
                 <!-- /.container-fluid -->
             </nav>
 
-
-            <section  id="loginPaciente">
+            <section id="loginPaciente" class=" milestones">
+		
                 <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 text-center animateup">
-                            <div class="inline-icons-text section-heading">
-                                <div class="inline-icon">
-                                    <hr/><hr/><hr/><hr/><hr/>
-                                </div>
-                                <span class="inline-icon heading-width">
-                                    <span class="heading-text">Pacientes</span>
-                                </span>
-                                <div class="inline-icon">
-                                    <hr/><hr/><hr/><hr/><hr/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>	
-                    <div class="row" align="center">
-                        <h3>Ingreso Paciente</h3>
-
-                        <div>
-                        <input style="background-color:teal" type="text" ng-model="usuario" size="10" />
-
-                        <br><br>
-                        <button class="btn btn-primary filter active" ng-click="login()">Aceptar</button>
-
-                        <br><br>
-                        usuario:{{usuario}}
-                        <br>
-                        contraseña:{{selectedPacienteDetail}}
+                    <br><br>
+                    <div class="text-center animateup">
                         
-                        <div class="text-center">
-							<div class="page-scroll menu-icon">
-								<a href="#medicamentos">
-									<i class="fa fa-angle-down fa-lg fa-border"></i>
-								</a>
-							</div>
-						</div>
-                    </div>
+				<div class="inline-icons-text section-heading1">
+					<div class="inline-icon">
+						<hr/><hr/><hr/><hr/><hr/><hr/>
+					</div>
+					<span class="inline-icon heading-width">
+                                                <span class="heading-text">Ingresar</span>
+						
+					</span>
+					<div class="inline-icon">
+						<hr/><hr/><hr/><hr/><hr/><hr/>
+					</div>
+				</div>
+			</div>	
+                    <div class="row" align="center">
+                       
+                        <div>
+                            <p style="font-size:25px; font-family:Tw Cen MT;color:white">
+                                    Bienvenido apreciado paciente, para priority Health es un gusto 
+                                <br>tenerlo aqui, por favor ingrese su número de documento de 
+                                <br>identidad para que pueda proceder a solicitar un pedido
+                            </p>
+                            <br><br><br><br>
+                            <input type="text" size="10" class="input-lg" style="background-color:#2A95E7"  ng-model="usuario"  />
+                            <br><br>
+                            <br><br>
+
+                            <button type = "button" class = "btn btn-default btn-lg" ng-click="login()">ingresar</button>
+                            <br><br><br><br><br><br>
+
+                        
+                        </div>
 
                     </div>
                 </div>
-            </section>
+	</section>
+            
             
              <section  id="medicamentos">
             <div class="container">
@@ -178,12 +176,25 @@
             </div>
 	</section>
 	
-    <section class="grey-area testimonial-section">
+    <section class="grey-area testimonial-section ">
+            <div class="container">
 		
-		
-			<div class="gap-50"></div>
+    
+                        <div class="text-center animateup">
+				<div class="inline-icons-text section-heading1">
+					<div class="inline-icon">
+						<hr/><hr/><hr/><hr/><hr/><hr/>
+					</div>
+					<span class="inline-icon heading-width">
+                                                <span class="heading-text">Productos selesccionados</span>
+						
+					</span>
+					<div class="inline-icon">
+						<hr/><hr/><hr/><hr/><hr/><hr/>
+					</div>
+				</div>
+			</div>	
 			<div class="container animatezoomin">
-				<h2> Productos  seleccionados:</h2>
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
@@ -204,6 +215,7 @@
                                 <button center-align class="btn btn-primary filter active" value="OK" ng-click="crearPedido()">Crear pedido.</button>
 				
 			</div>
+                </div>
 	</section>
 	
 

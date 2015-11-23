@@ -1129,6 +1129,19 @@ div#loading {
 	border: 0;
 	border-top: 2px solid #444444;
 }
+
+.section-heading1{
+	margin-bottom:30px;
+}
+
+
+.section-heading1 hr{
+	margin-top: 4px;
+	margin-bottom: 4px;
+	border: 0;
+	border-top: 2px solid #FFFFFF;
+}
+
 .section-heading .heading-text{
 	
 	padding: 0 .25em;
@@ -1136,6 +1149,17 @@ div#loading {
 	text-transform:uppercase;
 }
 .section-heading .heading-width{
+	width:0.01%;
+}
+
+.section-heading1 .heading-text{
+	
+	padding: 0 .25em;
+	font-size:2.5em;
+	text-transform:Capitalized Case;
+        color: #FFFFFF
+}
+.section-heading1 .heading-width{
 	width:0.01%;
 }
 img.about-photo{
@@ -1244,6 +1268,9 @@ img.about-photo{
 }
 .contact .section-heading hr{
 	border-color:#fff;
+}
+.contact .section-heading1 hr{
+	border-color:#E44F99;
 }
 .element-item.gallery-item{
 	max-width:33.333333333%;

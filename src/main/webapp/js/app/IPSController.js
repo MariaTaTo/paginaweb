@@ -112,7 +112,7 @@
                         $scope.selectedMedicamentoDetail = response.data;
                         if(response.data.autorizaciones.estado!='aprobado'){
                             $scope.selectedMedicamentoId=-1;
-                            alert('DEBE APROBAR');
+                            alert('Lo sentimos, este medicamento no puede seleccionarlo porque no está autorizado por su EPS, por favor tramite la solicitud por medio de la página y vuelva a intentarlo, recuerde que puede seguir el proceso de realizar el pedido. Gracias');
                             
                         }else{
                             $scope.total=$scope.totala+$scope.total;
