@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="IPS">
+<html lang="en" ng-app="Autorizaciones">
 
     <head>
 
@@ -11,7 +11,7 @@
 
         <script src="js/libs/angular.min.js"></script>
         <script src="js/libs/angular-route.min.js"></script>
-        <script src="js/app/IPSController.js"></script>
+        <script src="js/app/AutorizacionesController.js"></script>
         <script src="js/app/IPSServices.js"></script> 
         <script src="js/jquery-1.10.2.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -65,11 +65,9 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li><a href="indexclinix.html"> Inicio</a></li>
-                            <li class="active"><a href="Paciente.html"> Paciente</a></li>
-                            <li ><a href="autorizaciones.html"> Autorizaciones</a></li>
+                            <li><a href="Paciente.html"> Paciente</a></li>
+                            <li class="active"><a href="autorizaciones.html"> Autorizaciones</a></li>
                             <li><a href="Consultas.html"> Consultas</a></li>
-                        
-		  
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
@@ -129,7 +127,7 @@
                                 <hr/><hr/><hr/><hr/><hr/>
                             </div>
                             <span class="inline-icon heading-width">
-                                <span class="heading-text">Medicamentos a solicitar</span>
+                                <span class="heading-text">Medicamentos disponibles</span>
                             </span>
                             <div class="inline-icon">
                                 <hr/><hr/><hr/><hr/><hr/>
@@ -137,9 +135,12 @@
                         </div>
                     </div>
                 </div>	
+                <p align="center" style="font-size:25px;font-family:Tw Cen MT;color:#444444">
+                                    Estos son los medicamentos que tiene disponible
+                                <br>por favor seleccione el medicamento del que desee 
+                                <br>enviar la solicitud de autorización
+                            </p>
                 <div class="row">
-                    
-
                         <table class="table table-striped" style="cursor: pointer;">
                             <thead>
                                 <tr>
@@ -151,21 +152,19 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="prod in medicamentos" ng-if="prod.medicamentos.autorizaciones.epsafilidas.idEps==EpsId " ng-click="setSelectedMedicamento(prod.medicamentos.idMedicamentos,prod.precio,prod)" >
-                                    <!--ng-if="prod.epsafilidas.idEps==3 && prod.estado=='aprobado'" -->
                                     <td style="background-color:teal"> {{ prod.medicamentos.idMedicamentos}}</td>
                                     <td style="background-color:teal">{{ prod.medicamentos.nombre}}</td>
                                     <td style="background-color:teal"> {{ prod.medicamentos.descripcion}}</td>
                                     <td style="background-color:teal"> {{ prod.precio}}</td>
-
                                 </tr>
                             </tbody>
                         </table>
 
                     
-                    <div class="col-sm-6"  ng-if="selectedMedicamentoId!=-1">
+                    <div class="col-sm-6"  ng-if="idautorizacion!=-1">
 
- 
-                        <button center-align class="btn btn-primary filter active" value="OK" ng-click="addToSelectedMedicamentos()">Agregar al carrito.</button>
+                        <!--<button center-align class="btn btn-primary filter active" value="OK" ng-click="crearPedido()">Crear pedido.</button>-->
+                        <button center-align class="btn btn-primary filter active" value="OK" ng-click="enviarSolicitud()">Enviar solicitud.</button>
                         <br><br>
 
                     </div>
@@ -175,7 +174,7 @@
 
             </div>
 	</section>
-	
+	<!--
     <section class="grey-area testimonial-section ">
             <div class="container">
 		
@@ -193,7 +192,7 @@
 						<hr/><hr/><hr/><hr/><hr/><hr/>
 					</div>
 				</div>
-			</div>	
+			</div>
 			<div class="container animatezoomin">
                                 <table class="table table-striped">
                                     <thead>
@@ -217,7 +216,7 @@
 			</div>
                 </div>
 	</section>
-	
+	-->
 
             <footer class="text-center">
                 <div class="footer-below">

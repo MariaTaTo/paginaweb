@@ -8,13 +8,19 @@ package edu.eci.cosw.restcontrollers;
 
 import edu.eci.cosw.samples.logica.Clase;
 import edu.eci.cosw.samples.model.Autorizacion;
+import edu.eci.cosw.samples.model.Estado;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -53,6 +59,19 @@ public class ManejadorAutorizaciones {
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     public List<Autorizacion> AutorizacionPorPaciente(@PathVariable int id)throws OperationFailedException{
         return c.ConsultarAutorizacionPaciente(id);
+    }
+    
+    
+    @RequestMapping( value = "/{id}",method = RequestMethod.PUT)
+    public ResponseEntity<?> update(@PathVariable int id,@RequestBody Estado estado) {
+        c.updateAutorizacion(id, estado.getEstado());
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+    
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public void handle(HttpMessageNotReadableException e) {
+        e.printStackTrace();
     }
     
     

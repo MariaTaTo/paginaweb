@@ -1,5 +1,5 @@
 (function () {
-    var app = angular.module('IPS', ['ngRoute','IPSServices']);
+    var app = angular.module('Autorizaciones', ['ngRoute','IPSServices']);
         
     app.controller('ipscontroller', function ($scope,MedicamentosSelectionFactory,IPSRestAPI) {
         
@@ -8,19 +8,13 @@
         $scope.Eps;
         $scope.EpsId;
         $scope.selectedPacienteId = -1;
-        $scope.pedido;
-        $scope.idordenCompra;
-        $scope.proveedor1;
-        $scope.idmedicpp;
-        $scope.tomado;
-     
-       
-
-  
+        $scope.idautorizacion=-1;
+        
         $scope.login=function(){
                 IPSRestAPI.pacienteByIdRequestPromise($scope.usuario).then(
                     //promise success
                     function (response) {
+                        alert('ingreso el paciente'+response.data.nombre);
                         $scope.paciente=response.data;
                         $scope.selectedPacientesId = response.data;
                         $scope.Eps=response.data.epsafilidas;
@@ -36,22 +30,12 @@
             };
             
             //$scope.medicamentoProveedor=[];
-         $scope.crearPedido = function () {
+         $scope.enviarSolicitud = function () {
             
-         $scope.detalles=[];
-            for (x = 0; x < $scope.selectedMedicamentos.length; x++) {
-               
-               $scope.detallePedido = new DetallePedido($scope.medicamentoProveedor[x],1);
-               $scope.detalles[x]=$scope.detallePedido;
-               
-            }
-            for(t=0;t<$scope.detalles.length;t++){
-                console.log('entro al for'+$scope.detalles[t]);
-                
-            }
-            
-             IPSRestAPI.pos($scope.paciente,$scope.total,$scope.detalles);
-            console.log('Shopping kart updated' + JSON.stringify($scope.selectedMedicamentos));
+         
+                    alert('entro aca y va a hacer un put');
+            IPSRestAPI.put($scope.paciente,$scope.idautorizacion);
+            console.log('Shopping kart updated' + JSON.stringify($scope.idautorizacion));
             
          };
         $scope.medicamentos = [];
@@ -67,19 +51,15 @@
 
         $scope.selectedMedicamentoDetail = null;
 
-        function DetallePedido(medicamentosPorProveedor, cantidad) {
-            this.medicamentosPorProveedor = medicamentosPorProveedor;
-            this.cantidad = cantidad;
-        };
         
         $scope.availableMedicamentosRequestPromise = IPSRestAPI.medicamentosRequestPromise();
 
-        $scope.addToSelectedMedicamentos = function () {
+        //$scope.addToSelectedMedicamentos = function () {
             
-            MedicamentosSelectionFactory.addMedicamento($scope.selectedMedicamentoDetail);
-            console.log('Shopping kart updated' + JSON.stringify($scope.selectedMedicamentos));
+//            MedicamentosSelectionFactory.addMedicamento($scope.selectedMedicamentoDetail);
+//            console.log('Shopping kart updated' + JSON.stringify($scope.selectedMedicamentos));
             
-        };
+//        };
 
         $scope.availableMedicamentosRequestPromise.then(
             //promise success
@@ -110,12 +90,13 @@
 
                         console.log(response.data);
                         $scope.selectedMedicamentoDetail = response.data;
-                        if(response.data.autorizaciones.estado!='aprobado'){
+                        if(response.data.autorizaciones.estado!='no enviada'){
                             $scope.selectedMedicamentoId=-1;
-                            alert('Lo sentimos, este medicamento no puede seleccionarlo porque no está autorizado por su EPS, por favor tramite la solicitud por medio de la página y vuelva a intentarlo, recuerde que puede seguir el proceso de realizar el pedido. Gracias');
-                            
+                            $scope.idautorizacion=-1;
+                            alert('Su solicitud está en estado: '+response.data.autorizaciones.estado);
                         }else{
-                            $scope.total=$scope.totala+$scope.total;
+                            $scope.idautorizacion=response.data.autorizaciones.numero;
+                            alert('numero de la autorización: '+response.data.autorizaciones.numero);
                         }
                     },
                     //promise error

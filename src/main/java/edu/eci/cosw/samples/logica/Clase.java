@@ -103,7 +103,9 @@ public class Clase {
     BiometricoRepository bios;
 
     
-   
+   public void updateAutorizacion(int id, String estado){
+        ar.cambiarEstado(id,estado);
+    }
     
     public void addNewEps(Epsafilida eps){
         epsr.save(eps);
