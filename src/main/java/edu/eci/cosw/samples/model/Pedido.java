@@ -71,7 +71,7 @@ public class Pedido  implements java.io.Serializable {
         this.idPedidos = idPedidos;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="Pacientes_idPacientes", nullable=false)
     public Paciente getPacientes() {
         return this.pacientes;
@@ -102,7 +102,7 @@ public class Pedido  implements java.io.Serializable {
     }
 
     //@OneToMany(fetch=FetchType.LAZY, mappedBy="pedidos")
-    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="Pedidos_idPedidos", nullable=false)
     public Set<DetallePedido> getDetallesPedidos() {
         return this.detallesPedidos;
