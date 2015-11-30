@@ -52,7 +52,7 @@ public class DetallePedido  implements java.io.Serializable {
         this.idDetalle = idDetalle;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="MedicamentosPorProveedor_idMedicamentosPorProveedor", nullable=false)
     public MedicamentoPorProveedor getMedicamentosPorProveedor() {
         return this.medicamentosPorProveedor;
