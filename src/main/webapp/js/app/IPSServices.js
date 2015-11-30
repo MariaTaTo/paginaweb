@@ -156,10 +156,7 @@
            
             
         };
-        
-        
-        
-          
+                
         this.getAutorizacionByPaciente = function(id){
             
             return $http({

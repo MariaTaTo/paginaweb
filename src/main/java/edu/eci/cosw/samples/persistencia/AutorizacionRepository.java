@@ -25,8 +25,8 @@ public interface AutorizacionRepository extends CrudRepository<Autorizacion, Int
     @Query("from Autorizacion a")
     public List<Autorizacion> getAutorizaciones();
     
-    @Query("from Autorizacion a where a.numero= :ln")
-    public List<Autorizacion> AutorizacionPorPaciente (@Param("ln")Integer id );
+    @Query("from Autorizacion a where a.pacientes.idPacientes = :ln")
+    public List<Autorizacion> AutorizacionPorPaciente (@Param("ln")int id );
 
     @Query("from Autorizacion e where e.estado= :estado")
     public List<Autorizacion> AutorizacionPorEstado (@Param("estado")String estado);

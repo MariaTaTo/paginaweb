@@ -146,7 +146,7 @@
                     <div class="form-group input-group">
                         <span class="input-group-addon"> <i class="fa fa-user fa-lg"></i> </span>
                         <label for="name">Numero de Seguimiento de Autorizacion</label>
-			<input class="form-control" type="text" ng-model="idPaciente" id="idPaciente" placeholder="Numero de Seguimiento de Autorizacion">
+			<input class="form-control" type="text" ng-model="idPaciente" id="idPaciente" placeholder="Identificacion del Paciente">
                     </div>
                      <br>
                     <div class="form-group col-xs-12">
@@ -157,9 +157,10 @@
             <table class="table table-condensed table-bordered table-striped">
                 <thead>
                     <tr>
-                       <th>Codigo Autorizacion</th>
-                       <th>Nombre</th>
+                       <th>Identificacion del Paciente</th>
+                       <th>Nombre paciente</th>
                        <th>Estado</th>
+                       <th>Nombre Eps</th>
                        <th>Fecha Expedicion</th>
                        <th>Fecha Vencimiento</th>
                        
@@ -168,13 +169,16 @@
                 <tbody>
                     <tr ng-repeat="con in consulAuto">
                         <td>
-                            {{con.numero}}
+                            {{con.pacientes.idPacientes}}
                         </td>
                          <td>
-                            {{con.epsafilidas.nombre}}
+                            {{con.pacientes.nombre}}
                         </td>
                         <td>
                             {{con.estado}}
+                        </td>
+                        <td>
+                            {{con.epsafilidas.nombre}}
                         </td>
                         <td>
                             {{con.fechaExpedicion}}
