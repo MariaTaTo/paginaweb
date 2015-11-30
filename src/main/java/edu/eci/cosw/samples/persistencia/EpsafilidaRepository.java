@@ -19,6 +19,7 @@ import org.springframework.data.repository.query.Param;
  * @author Usuario
  */
 public interface EpsafilidaRepository extends CrudRepository<Epsafilida, Integer>{
+  
     @Query("from Epsafilida eps where eps.idEps= :ln")
     public Epsafilida search(@Param("ln") int searchTerm);
 }

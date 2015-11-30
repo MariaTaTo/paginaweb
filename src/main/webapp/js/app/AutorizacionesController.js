@@ -33,7 +33,7 @@
          $scope.enviarSolicitud = function () {
             
          
-                    alert('entro aca y va a hacer un put');
+            alert('entro aca y va a hacer un put');
             IPSRestAPI.put($scope.paciente,$scope.idautorizacion);
             console.log('Shopping kart updated' + JSON.stringify($scope.idautorizacion));
             

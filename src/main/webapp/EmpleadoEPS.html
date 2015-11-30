@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="IPSEMPLEADOEPS">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+
+        <script src="js/libs/angular.min.js"></script>
+        <script src="js/libs/angular-route.min.js"></script>
+        <script src="js/app/EmpleadoEPSController.js"></script>
+        <script src="js/app/IPSServices.js"></script>  
+        <script src="js/jquery-1.10.2.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.isotope.min.js"></script>
+        <script src="js/jquery.easing.js"></script>
+        <script src="js/classie.js"></script>
+        <script src="js/jquery.appear.js"></script>
+        <script src="js/jquery.flexslider-min.js"></script>
+        <script src="js/jquery.knob.js"></script>
+        <script src="js/countUp.min.js"></script>
+
+
+        <title>IPS Priority Health</title>
+        <script type="text/javascript">
+            function preloader() {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("content").style.display = "block";
+            }//preloader
+            window.onload = preloader;
+        </script>
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="css/animate.css" rel="stylesheet" type="text/css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+
+
+        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Titillium+Web:300' rel='stylesheet' type='text/css'>
+
+    </head>
+
+    <body id="page-top" class="index" data-spy="scroll" data-target=".navbar-fixed-top" ng-controller="empleadoepscontroller">
+        <div id="loading"></div>
+        <div id="content">
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-fixed-top navbar-shrink text-center">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!--<a class="navbar-brand" href="#page-top">Clinix</a>-->
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="indexclinix.html"> Inicio</a></li>
+                            <li class="active"><a href="EmpleadoESP.html"> Empleado de la EPS</a></li>
+
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+
+            <section  id="loginEmpleado">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center animateup">
+                            <div class="inline-icons-text section-heading">
+                                <div class="inline-icon">
+                                    <hr/><hr/><hr/><hr/><hr/>
+                                </div>
+                                <span class="inline-icon heading-width">
+                                    <span class="heading-text">Empleado EPS</span>
+                                </span>
+                                <div class="inline-icon">
+                                    <hr/><hr/><hr/><hr/><hr/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>	
+                    <div class="row">
+
+
+                        <div align="center">
+                            <form style="width:300px;height:300px;font-size:12px;background-color:#31b0d5;">
+
+                                <br><br>
+
+                                <h3>Ingreso Empleado</h3>
+
+                                <p>Ingrese cedula empleado</p>
+                                <input style="background-color:#b4bcc2" ng-model="empleado" />
+
+                                <br><br>
+                                <button class="btn btn-primary filter active" ng-click="loginEmpleado()">Entrar</button>
+
+                                <br><br>
+                                <p> Empleado: {{empleado.nombre}}</p>
+
+                                <div class="text-center">
+                                    <div class="page-scroll menu-icon">
+                                        <a href="#autorizacion">
+                                            <i class="fa fa-angle-down fa-lg fa-border"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="gallery" id="autorizacion">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center animateup">
+                            <div class="inline-icons-text section-heading">
+                                <div class="inline-icon">
+                                    <hr/><hr/><hr/><hr/><hr/>
+                                </div>
+                                <span class="inline-icon heading-width">
+                                    <span class="heading-text">Autorizaciones</span>
+                                </span>
+                                <div class="inline-icon">
+                                    <hr/><hr/><hr/><hr/><hr/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" >
+
+                            <p ng-if="autenticar == -1">  <font style="background-color: #00ccff;"> !!!Para poder ingresar debe autenticarse como empleado!!! </font></p>
+                            <div ng-if="autenticar !== -1" > 
+
+                                <h3>Autorizaciones</h3>
+
+                                <p>Consulte las autorizaciones </p> 
+
+                                <button class="btn btn-primary filter active" ng-click="cargarAutorizacionesPorEps()">Consultar</button> 
+                                <br><br>
+
+
+                                    <h3>Seleccion</h3>
+                                    <p>Seleccione los autorizaciones que desea aprobar</p>
+
+                                    <table border="2px"  class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th> Numero Autorizacion </th>
+                                                <th> Eps afiliada </th>
+                                                <th> Nombre Eps </th>
+                                                <th> Estado</th> 
+                                                <th> Identificacion Paciente</th>  
+                                                <th> Nombre Paciente</th> 
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="x in autorizaciones" ng-click="setSelectedMedicamentoCotizar(x.pacientes.idPacientes, x.numero,x)" >
+                                                <!--ng-if="prod.epsafilidas.idEps==3 && prod.estado=='aprobado'" -->
+                                                <td scope="col"> {{x.numero}}</td>
+                                                <td scope="col"> {{x.epsafilidas.idEps}}</td>
+                                                <td scope="col"> {{x.epsafilidas.nombre}}</td>
+                                                <td scope="col"> {{x.estado}}</td> 
+                                                <td scope="col"> {{x.pacientes.idPacientes}}</td>
+                                                <td scope="col"> {{x.pacientes.nombre}}</td>
+                                            
+
+                                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <button center-align class="btn btn-primary filter active" value="OK" ng-click="addToSelectedMedicamentosCotizar()">Mostrar Autorizaciones Aprobadas</button>
+                                    <br><br>
+
+                                    <h3>Autorizaciones Seleccionados</h3>
+                                    <p> Autorizacione  seleccionados:</p>
+                                    <table border="2px"  class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th> Numero Autorizacion </th>
+                                                <th> Eps afiliada </th> 
+                                                <th> Nombre Eps </th>
+                                                <th> Identificacion Paciente</th>  
+                                                <th> Nombre Paciente</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr ng-repeat="prod in selectedMedicamentosCotizar"  >
+                                                <td>{{ prod.numero}}</td>
+                                                <td>{{ prod.epsafilidas.idEps}}</td>
+                                                <td>{{ prod.epsafilidas.nombre}}</td>
+                                                <td>{{ prod.pacientes.idPacientes}}</td>
+                                                <td>{{ prod.pacientes.nombre}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table> 
+                                    
+
+                                <br><br>
+
+                            </div>  
+
+                        </div>
+                    </div>
+            </section>
+
+            <section class="grey-area testimonial-section">
+
+                <div class="gap-50"></div>
+                <div class="container animatezoomin">
+                    <h2> Empleado EPS</h2>
+                </div>
+            </section>
+
+            <footer class="text-center">
+                <div class="footer-below">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                Priority Health 2015-2
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>	
+        </div>
+    </body>
+
+</html>

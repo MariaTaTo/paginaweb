@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class Epsafilida  implements java.io.Serializable {
 
 
-     private int idEps;
+     private Integer idEps;
      private String nombre;
      private String regimen;
      private String correo;
@@ -32,12 +32,12 @@ public class Epsafilida  implements java.io.Serializable {
     }
 
 	
-    public Epsafilida(int idEps, String nombre, String regimen) {
+    public Epsafilida(Integer idEps, String nombre, String regimen) {
         this.idEps = idEps;
         this.nombre = nombre;
         this.regimen = regimen;
     }
-    public Epsafilida(int idEps, String nombre, String regimen, String correo, Set<Paciente> pacienteses, Set<Contrato> contratoses, Set<Autorizacion> autorizacioneses) {
+    public Epsafilida(Integer idEps, String nombre, String regimen, String correo, Set<Paciente> pacienteses, Set<Contrato> contratoses, Set<Autorizacion> autorizacioneses) {
        this.idEps = idEps;
        this.nombre = nombre;
        this.regimen = regimen;
@@ -51,11 +51,11 @@ public class Epsafilida  implements java.io.Serializable {
 
     
     @Column(name="idEPS", unique=true, nullable=false)
-    public int getIdEps() {
+    public Integer getIdEps() {
         return this.idEps;
     }
     
-    public void setIdEps(int idEps) {
+    public void setIdEps(Integer idEps) {
         this.idEps = idEps;
     }
 

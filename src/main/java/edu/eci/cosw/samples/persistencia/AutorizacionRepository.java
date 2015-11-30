@@ -18,19 +18,25 @@ import org.springframework.data.repository.query.Param;
  * @author Usuario
  */
 public interface AutorizacionRepository extends CrudRepository<Autorizacion, Integer>{
-    @Query("from Autorizacion a where a.numero= :ln")
-    public Autorizacion search(@Param("ln") int searchTerm);
+   
+    @Query("from Autorizacion a where a.numero= :numero")
+    public Autorizacion AutorizacionPorNumero(@Param("numero") int numero);
     
-     @Query("from Autorizacion a")
+    @Query("from Autorizacion a")
     public List<Autorizacion> getAutorizaciones();
     
     @Query("from Autorizacion a where a.numero= :ln")
     public List<Autorizacion> AutorizacionPorPaciente (@Param("ln")Integer id );
 
+    @Query("from Autorizacion e where e.estado= :estado")
+    public List<Autorizacion> AutorizacionPorEstado (@Param("estado")String estado);
+    
+    @Query("from Autorizacion a where a.epsafilidas.idEps= :epsafilidas AND a.estado= 'pendiente'")
+    public List<Autorizacion> AutorizacionPorEps (@Param("epsafilidas")Integer epsafilidas);
     
     @Modifying  
     @Transactional
-    @Query ("update Autorizacion a SET a.estado=:es where a.numero= :ln ")
+    @Query ("update Autorizacion a SET a.estado=:es where a.numero= :ln")
     public void cambiarEstado(@Param("ln")Integer id ,@Param("es") String estado);
 
 }

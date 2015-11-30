@@ -90,11 +90,6 @@ public class Autorizacion  implements java.io.Serializable {
         this.epsafilidas = epsafilidas;
     }
 
-    
-    
-    
-    
-    
     @Temporal(TemporalType.DATE)
     @Column(name="fechaExpedicion", length=10)
     public Date getFechaExpedicion() {

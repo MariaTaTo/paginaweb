@@ -12,6 +12,7 @@ import edu.eci.cosw.samples.model.Despacho;
 import edu.eci.cosw.samples.model.DetalleInventario;
 import edu.eci.cosw.samples.model.DetalleOrdenCompra;
 import edu.eci.cosw.samples.model.DetallePedido;
+import edu.eci.cosw.samples.model.EmpleadoEPS;
 import edu.eci.cosw.samples.model.Epsafilida;
 import edu.eci.cosw.samples.model.Inventario;
 import edu.eci.cosw.samples.model.Medicamento;
@@ -29,6 +30,7 @@ import edu.eci.cosw.samples.persistencia.DespachoRepository;
 import edu.eci.cosw.samples.persistencia.DetallesInventarioRepository;
 import edu.eci.cosw.samples.persistencia.DetallesOrdenesCompraRepository;
 import edu.eci.cosw.samples.persistencia.DetallesPedidosRepository;
+import edu.eci.cosw.samples.persistencia.EmpleadoEPSRepository;
 import edu.eci.cosw.samples.persistencia.EpsafilidaRepository;
 import edu.eci.cosw.samples.persistencia.InventarioRepository;
 import edu.eci.cosw.samples.persistencia.MedicamentoPPRepository;
@@ -101,6 +103,10 @@ public class Clase {
     
     @Autowired
     BiometricoRepository bios;
+    
+    @Autowired
+    EmpleadoEPSRepository empleps;
+
 
     
    public void updateAutorizacion(int id, String estado){
@@ -203,7 +209,7 @@ public class Clase {
     }
     
     public Iterable<Autorizacion> consultarAutorizaciones() {
-        Iterable<Autorizacion> au = ar.findAll();
+        Iterable<Autorizacion> au = ar.getAutorizaciones();
         return au;
     }
 
@@ -387,6 +393,25 @@ public class Clase {
 
     public Biometrico consultarBiometricoPorCodigo(String codBiometrico) {
        return bios.biometricoPorCodigo(codBiometrico);
+    }
+    
+     public List<Autorizacion> ConsultarAutorizacionEstado(String estado){
+        return ar.AutorizacionPorEstado(estado);
+    }
+     
+     public List<Autorizacion>  ConsultarAutorizacionEps(Integer eps){
+        return ar.AutorizacionPorEps(eps);
+    }
+     
+     
+     public Autorizacion  ConsultarAutorizacionId(int id){
+        return ar.AutorizacionPorNumero(id);
+     }
+    
+     
+      public EmpleadoEPS consultarEmpleadoEPS (int id) {
+        EmpleadoEPS dp=empleps.obtenerEmpleadoEPSporId(id);
+        return dp;
     }
     
 }

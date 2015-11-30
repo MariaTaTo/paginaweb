@@ -29,6 +29,9 @@
                 
         }; 
         
+        
+        
+        
        this.pacientesRequestPromise = function () {            
             return $http({
                 method: 'GET',
@@ -260,7 +263,48 @@
                 });
             };
         
+         this.autorizacionByEstadoRequestPromise = function (estado) {            
+            return $http({
+                method: 'GET',
+                url: 'rest/autorizaciones/estado/'+estado
+            });   
+             
+        };
         
+         this.autorizacionByEpsRequestPromise = function (eps) {            
+            return $http({
+                method: 'GET',
+                url: 'rest/autorizaciones/eps/'+eps
+            });
+        };
+        
+        
+         this.empleadosEPSPorByIdRequestPromise = function (id) {            
+            return $http({
+                method: 'GET',
+                url: 'rest/empleadoEPS/'+id
+            });            
+        };
+        
+       this.putAutorizacion =function(paciente,idautorizacion, autorizacion){
+             
+                $http.put('rest/autorizaciones/'+idautorizacion , {numero:idautorizacion,estado:"aprobado"}).
+                        success(function(){
+                                      alert('La autorizacion fue aprobada');
+                }).error(function(){
+                    alert("   ----- No se pudo enviar la solicitud ------");
+                });
+                
+                
+        }; 
+        
+        
+        this.autorizacionByIdRequestPromise = function (id) {            
+            return $http({
+                method: 'GET',
+                url: 'rest/autorizaciones/numero/'+id
+            });
+        };
         
         
         

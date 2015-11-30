@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -60,6 +61,23 @@ public class ManejadorAutorizaciones {
     public List<Autorizacion> AutorizacionPorPaciente(@PathVariable int id)throws OperationFailedException{
         return c.ConsultarAutorizacionPaciente(id);
     }
+    
+     @RequestMapping(value = "/estado/{estado}",method = RequestMethod.GET)
+    public List<Autorizacion> AutorizacionPorEstado(@PathVariable String estado){
+        return c.ConsultarAutorizacionEstado(estado);
+    }
+    
+     @RequestMapping(value="/eps/{eps}",method=RequestMethod.GET)
+    public List<Autorizacion> AutorizacionPorEps(@PathVariable Integer eps) {  
+        List<Autorizacion> t = c.ConsultarAutorizacionEps(eps);
+        return t;
+    }
+    
+     /*@RequestMapping(value = "/numero/num/{numero}",method = RequestMethod.GET)
+    public Autorizacion AutorizacionPorId(@RequestParam("numero") int numero) {  
+        Autorizacion t = c.ConsultarAutorizacionId(numero);
+        return t;
+    }*/
     
     
     @RequestMapping( value = "/{id}",method = RequestMethod.PUT)
