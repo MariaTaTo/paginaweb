@@ -51,4 +51,14 @@ public class ManejadorPedidos {
         c.addNewPedido(p);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
+    
+    @RequestMapping(value="/paciente/{id}",method = RequestMethod.GET)
+     public List<Pedido> ConsultarPedidoPorPaciente(@PathVariable int id) throws OperationFailedException{
+        List<Pedido> p=c.consultarPedidoPorPaciente(id);
+        
+        if(p==null){
+            throw new OperationFailedException();
+        }
+        return p;
+     }
 }

@@ -413,7 +413,16 @@ public class Clase {
         EmpleadoEPS dp=empleps.obtenerEmpleadoEPSporId(id);
         return dp;
     }
+      
+       public List<Pedido>  consultarPedidoPorPaciente (int id) {
+        List<Pedido> pedidos=pr.PedidosPorPaciente(id);
+        return pedidos;
+    }
     
+      
+      
+      
+      
 }
 
 
