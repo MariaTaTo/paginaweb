@@ -25,4 +25,9 @@ public interface MedicamentoRepository extends CrudRepository<Medicamento, Integ
      @Query("from Medicamento a")
     public List<Medicamento> getMedicamentos();
     
+     @Query("Select distinct med FROM Pedido as pe inner join pe.detallesPedidos as dep \n" +
+        "inner join dep.medicamentosPorProveedor as mpp\n" +
+        "inner join mpp.medicamentos as med where pe.idPedidos= :idpedido ")
+     public List<Medicamento> consultarMedicamentosPedido(@Param("idpedido") int idpedido);
+    
 }

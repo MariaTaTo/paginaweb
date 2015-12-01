@@ -418,6 +418,11 @@ public class Clase {
         List<Pedido> pedidos=pr.PedidosPorPaciente(id);
         return pedidos;
     }
+       
+        public List<Medicamento>  consultarMedicamentoPorPedido (int id) {
+        List<Medicamento> medicamentos=mr.consultarMedicamentosPedido(id);
+        return medicamentos;
+    }
     
       
       

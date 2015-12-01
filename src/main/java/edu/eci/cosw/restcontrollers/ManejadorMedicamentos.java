@@ -45,10 +45,12 @@ public class ManejadorMedicamentos {
         return m;
     }
     
-    @RequestMapping(value = "/",method = RequestMethod.GET)
-    public List<Medicamento> consultarMedicamento()throws OperationFailedException{
-        return c.TodosMedicamentos();
+    @RequestMapping(value = "/pedido/{idpedido}",method = RequestMethod.GET)
+    public List<Medicamento> consultarMedicamento(@PathVariable int idpedido){
+        return c.consultarMedicamentoPorPedido(idpedido);
     }
+    
+    
     
     
 }
