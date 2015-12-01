@@ -46,5 +46,13 @@ public class ManejadorDespachos {
         return c.ConsultarDespachoPaciente(id);
     }
     
+     @RequestMapping(value = "/pedidos/{id}",method = RequestMethod.GET)
+    public Despacho DespachoPorPedido(@PathVariable Integer id){
+        return c.consultarDespachoPorPedido(id);
+    }
+    
+
+    
+    
     
 }

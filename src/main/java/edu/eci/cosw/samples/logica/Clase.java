@@ -423,7 +423,13 @@ public class Clase {
         List<Medicamento> medicamentos=mr.consultarMedicamentosPedido(id);
         return medicamentos;
     }
+        
+        public Despacho consultarDespachoPorPedido (Integer id) {
+        Despacho despacho=des.DespachoPorPedido(id);
+        return despacho;
+    }
     
+       
       
       
       

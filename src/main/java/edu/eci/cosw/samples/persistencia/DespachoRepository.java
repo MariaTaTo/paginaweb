@@ -19,8 +19,12 @@ public interface DespachoRepository extends CrudRepository<Despacho, Integer>{
      @Query("from Despacho a")
     public List<Despacho> getDespachos();
     
-   @Query("from Despacho a where a.idDespacho = :ln")
+   @Query("from Despacho a where a.idDespacho= :ln")
      //@Query("from Despacho a JOIN  a.pedidos as p where p.pacientes.idPacientes =: ln")
     public List<Despacho> DespachoPorPaciente (@Param("ln")int id );
+    
+    @Query("from Despacho des where des.pedidos.idPedidos= :idPedidos")
+    public Despacho DespachoPorPedido (@Param("idPedidos")Integer idPedidos);
 
+   
 }
