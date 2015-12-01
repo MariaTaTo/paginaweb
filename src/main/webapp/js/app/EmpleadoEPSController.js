@@ -48,7 +48,7 @@
         /*===================================================================*/
         /*=================Carga medicamentos segun la cantidad==============*/
         $scope.cargarAutorizacionesPorEps = function () {
-            alert('id: '+$scope.ideps);
+            
             IPSRestAPI.autorizacionByEpsRequestPromise($scope.ideps).then(
                     function (response){
                         $scope.autorizaciones = response.data;
@@ -76,7 +76,7 @@
        
         $scope.addToSelectedMedicamentosCotizar = function () {
             
-            AutorizacionesSeleccionFactory.addAutorizacion($scope.selectedAutorizacion);
+            //AutorizacionesSeleccionFactory.addAutorizacion($scope.selectedAutorizacion);
            
             console.log('Medicamentos Seleccionados actualizado' + JSON.stringify($scope.selectedMedicamentosCotizar));
              
@@ -89,6 +89,8 @@
             IPSRestAPI.putAutorizacion(idpac,idAuto);
            
             $scope.selectedAutorizacion = autorizacion;
+            
+            AutorizacionesSeleccionFactory.addAutorizacion($scope.selectedAutorizacion);
         
         };
        
