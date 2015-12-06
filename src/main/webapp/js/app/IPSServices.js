@@ -283,18 +283,24 @@
             });            
         };
         
-       this.putAutorizacion =function(paciente,idautorizacion, autorizacion){
-             
+       this.putAutorizacionAprobado =function(paciente,idautorizacion, autorizacion){
                 $http.put('rest/autorizaciones/'+idautorizacion , {numero:idautorizacion,estado:"aprobado"}).
                         success(function(){
                                       alert('La autorizacion fue aprobada');
                 }).error(function(){
                     alert("   ----- No se pudo enviar la solicitud ------");
                 });
-                
-                
         }; 
         
+        this.putAutorizacionRechazado =function(paciente,idautorizacion, autorizacion){
+             
+                $http.put('rest/autorizaciones/'+idautorizacion , {numero:idautorizacion,estado:"rechazada"}).
+                        success(function(){
+                                      alert('La autorizacion fue rechazada');
+                }).error(function(){
+                    alert("   ----- No se pudo enviar la solicitud ------");
+                });
+        };
         
         this.autorizacionByIdRequestPromise = function (id) {            
             return $http({

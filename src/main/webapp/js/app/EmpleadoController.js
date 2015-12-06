@@ -51,9 +51,11 @@
                             $scope.medicamentoPrProveedorc[i] = response.data[i].medicamentosPorProveedor;
                             console.log('Medicamentos Por Proveedor:' + $scope.medicamentoPrProveedorc[i]);
                         }
+                        if($scope.detallesInventario.length<=0)
+                        {alert('No existen medicamentos con la cantidad indicada');}
                     },
                     function (response) {
-                        alert('No existe un medicamento con la cantidad');
+                        alert('No existen medicamentos con la cantidad indicada');
                         console.log('No se pudieron traer medicamentos por proveedor:' + response);
                     }
             );

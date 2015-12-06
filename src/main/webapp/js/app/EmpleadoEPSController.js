@@ -11,7 +11,9 @@
         $scope.terminoo = -1;
         $scope.select = -2;
         $scope.ideps = 1;
-    
+        $scope.idpaci;
+        $scope.idAutor;
+           
         
         $scope.loginEmpleado = function () {
             IPSRestAPI.empleadosEPSPorByIdRequestPromise($scope.empleado).then(
@@ -75,10 +77,21 @@
         /*=================Adiciona los medicamentos a comprar==============*/
        
         $scope.addToSelectedMedicamentosCotizar = function () {
-            
-            //AutorizacionesSeleccionFactory.addAutorizacion($scope.selectedAutorizacion);
            
-            console.log('Medicamentos Seleccionados actualizado' + JSON.stringify($scope.selectedMedicamentosCotizar));
+            IPSRestAPI.putAutorizacionAprobado($scope.idpaci,$scope.idAutor); 
+            AutorizacionesSeleccionFactory.addAutorizacion($scope.selectedAutorizacion);
+           
+            console.log('Autorizacion Seleccionados aprobada' + JSON.stringify($scope.selectedMedicamentosCotizar));
+             
+        };
+        
+        $scope.addToSelectedMedicamentosCotizar2 = function () {
+           
+            IPSRestAPI.putAutorizacionRechazado($scope.idpaci,$scope.idAutor);
+            
+            AutorizacionesSeleccionFactory.addAutorizacion($scope.selectedAutorizacion);
+           
+            console.log('Autorizacion Seleccionados rechazada' + JSON.stringify($scope.selectedMedicamentosCotizar));
              
         };
         /*===================================================================*/
@@ -86,12 +99,14 @@
         
         $scope.setSelectedMedicamentoCotizar = function (idpac,idAuto,autorizacion) {
            
-            IPSRestAPI.putAutorizacion(idpac,idAuto);
+            
+           alert('Autorizacion seleccionada');
+           
+            $scope.idpaci=idpac;
+            $scope.idAutor=idAuto;
            
             $scope.selectedAutorizacion = autorizacion;
             
-            AutorizacionesSeleccionFactory.addAutorizacion($scope.selectedAutorizacion);
-        
         };
        
       

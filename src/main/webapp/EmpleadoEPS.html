@@ -95,7 +95,7 @@
 
 
                         <div align="center">
-                            <form style="width:300px;height:300px;font-size:12px;background-color:#31b0d5;">
+                            <form style="width:300px;height:320px;font-size:12px;background-color:#31b0d5;">
 
                                 <br><br>
 
@@ -109,6 +109,7 @@
 
                                 <br><br>
                                 <p> Empleado: {{empleado.nombre}}</p>
+                                <p> Eps: {{empleado.epsPertenece.nombre}}</p>
 
                                 <div class="text-center">
                                     <div class="page-scroll menu-icon">
@@ -149,14 +150,14 @@
 
                                 <h3>Autorizaciones</h3>
 
-                                <p>Consulte las autorizaciones </p> 
+                                <p>Consulte las autorizaciones de la eps que estan pendientes</p> 
 
                                 <button class="btn btn-primary filter active" ng-click="cargarAutorizacionesPorEps()">Consultar</button> 
                                 <br><br>
 
 
                                     <h3>Seleccion</h3>
-                                    <p>Seleccione los autorizaciones que desea aprobar</p>
+                                    <p>Seleccione la autorizacion e indique si desea aprobar o rechazar</p>
 
                                     <table border="2px"  class="table table-striped">
                                         <thead>
@@ -179,13 +180,12 @@
                                                 <td scope="col"> {{x.estado}}</td> 
                                                 <td scope="col"> {{x.pacientes.idPacientes}}</td>
                                                 <td scope="col"> {{x.pacientes.nombre}}</td>
-                                            
-
                                             </tr>
                                         </tbody>
 
                                     </table>
-                                    
+                                    <button center-align class="btn btn-primary filter active" value="OK" ng-click="addToSelectedMedicamentosCotizar()">Aprobar</button>
+                                    <button center-align class="btn btn-primary filter active" value="OK" ng-click="addToSelectedMedicamentosCotizar2()">Rechazar</button>
                                     <br>
 
                                     <h3>Autorizaciones Seleccionados</h3>
@@ -194,7 +194,6 @@
                                         <thead>
                                             <tr>
                                                 <th> Numero Autorizacion </th>
-                                                <th> Eps afiliada </th> 
                                                 <th> Nombre Eps </th>
                                                 <th> Identificacion Paciente</th>  
                                                 <th> Nombre Paciente</th>
@@ -204,7 +203,6 @@
                                         <tbody>
                                             <tr ng-repeat="prod in selectedMedicamentosCotizar"  >
                                                 <td>{{ prod.numero}}</td>
-                                                <td>{{ prod.epsafilidas.idEps}}</td>
                                                 <td>{{ prod.epsafilidas.nombre}}</td>
                                                 <td>{{ prod.pacientes.idPacientes}}</td>
                                                 <td>{{ prod.pacientes.nombre}}</td>
