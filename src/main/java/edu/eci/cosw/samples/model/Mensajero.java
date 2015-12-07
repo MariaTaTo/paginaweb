@@ -46,6 +46,16 @@ public class Mensajero  implements java.io.Serializable {
        this.correo = correo;
        this.despachoses = despachoses;
     }
+    public Mensajero(int idEmpleados, String nombre, String cargo, Integer salario, Integer telefono, String direccion, String correo) {
+       this.idEmpleados = idEmpleados;
+       this.nombre = nombre;
+       this.cargo = cargo;
+       this.salario = salario;
+       this.telefono = telefono;
+       this.direccion = direccion;
+       this.correo = correo;
+       this.despachoses = despachoses;
+    }
    
      @Id 
 
