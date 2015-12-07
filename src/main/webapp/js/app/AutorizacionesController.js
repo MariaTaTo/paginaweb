@@ -32,8 +32,6 @@
             //$scope.medicamentoProveedor=[];
          $scope.enviarSolicitud = function () {
             
-         
-            alert('entro aca y va a hacer un put');
             IPSRestAPI.put($scope.paciente,$scope.idautorizacion);
             console.log('Shopping kart updated' + JSON.stringify($scope.idautorizacion));
             
@@ -96,7 +94,7 @@
                             alert('Su solicitud está en estado: '+response.data.autorizaciones.estado);
                         }else{
                             $scope.idautorizacion=response.data.autorizaciones.numero;
-                            alert('numero de la autorización: '+response.data.autorizaciones.numero);
+                            alert('numero de la autorización: '+response.data.autorizaciones.numero+' nombre del medicamento: '+$scope.selectedMedicamentoDetail.nombre);
                         }
                     },
                     //promise error

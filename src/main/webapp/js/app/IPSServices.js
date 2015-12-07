@@ -17,11 +17,10 @@
         
         //IPSRestAPI.put($scope.usuario,$scope.idautorizacion);
         this.put =function(paciente,idautorizacion){
-             alert('entro al metodo puuuuuuuuuuuuut');
              
                 $http.put('rest/autorizaciones/'+idautorizacion , {numero:idautorizacion,estado:"pendiente"}).
                         success(function(){
-                                      alert('Felicidades'+paciente.nombre+' su autorización fue enviada correctamente');
+                                      alert('Felicidades '+paciente.nombre+' su autorización fue enviada correctamente');
                 }).error(function(){
                     alert("   ----- No se pudo enviar la solicitud ------"+paciente.nombre);
                 });

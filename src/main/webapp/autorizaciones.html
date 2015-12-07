@@ -152,10 +152,10 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="prod in medicamentos" ng-if="prod.medicamentos.autorizaciones.epsafilidas.idEps==EpsId " ng-click="setSelectedMedicamento(prod.medicamentos.idMedicamentos,prod.precio,prod)" >
-                                    <td style="background-color:teal"> {{ prod.medicamentos.idMedicamentos}}</td>
-                                    <td style="background-color:teal">{{ prod.medicamentos.nombre}}</td>
-                                    <td style="background-color:teal"> {{ prod.medicamentos.descripcion}}</td>
-                                    <td style="background-color:teal"> {{ prod.precio}}</td>
+                                    <td style="background-color:#C59AEB"> {{ prod.medicamentos.idMedicamentos}}</td>
+                                    <td style="background-color:#DBB1FF">{{ prod.medicamentos.nombre}}</td>
+                                    <td style="background-color:#C59AEB"> {{ prod.medicamentos.descripcion}}</td>
+                                    <td style="background-color:#DBB1FF"> {{ prod.precio}}</td>
                                 </tr>
                             </tbody>
                         </table>
