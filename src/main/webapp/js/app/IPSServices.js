@@ -177,6 +177,16 @@
         };
         
         
+        
+         this.getAutorizacionByMedicamento = function(id){
+            
+            return $http({
+                
+              method : 'GET',
+              url: 'rest/medicamentos/autorizaciones/'+id
+            });
+        };
+        
         //////////////////////////////////////////////////////////////////////////
         this.mensajerosRequestPromise = function () {            
             return $http({

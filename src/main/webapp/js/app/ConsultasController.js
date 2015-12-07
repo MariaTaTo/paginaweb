@@ -13,6 +13,7 @@
         $scope.proveedor1;
         $scope.idmedicpp;
         $scope.tomado;
+        $scope.numeroMedi;
      
        
 
@@ -26,17 +27,17 @@
                         $scope.selectedPacientesId = response.data;
                         $scope.Eps=response.data.epsafilidas;
                         $scope.EpsId=response.data.epsafilidas.idEps;
-                        console.log('mirar si esto fincionaaaaaaaaaa'+response.data.epsafilidas.idEps);
-                        console.log('aca que viene : '+$scope.usuario);
+                        /*console.log('mirar si esto fincionaaaaaaaaaa'+response.data.epsafilidas.idEps);
+                        console.log('aca que viene : '+$scope.usuario);*/
                     },
                     //promise error
                     function (response) {
-                         alert('incorrecto');
+                       
                         console.log('viene con id: '+ $scope.usuario);
                         console.log('Unable tdo get data from REST API:' + response);
                     }
                 );
-            };
+    }
          
         
         $scope.idPaciente;
@@ -45,8 +46,38 @@
         $scope.AutorizacionPorPaciente = function (){
             $scope.consulAuto = IPSRestAPI.getAutorizacionByPaciente($scope.idPaciente).success(function (data){
             $scope.consulAuto = data; 
+            $scope.numeroMedi = data.numero;
+            
+               
           });
         };
+        
+         /* $scope.AutorizacionPorPaciente = function (){
+              IPSRestAPI.getAutorizacionByPaciente($scope.idPaciente).then(
+                             function (response) {
+
+                        $scope.consulAuto = response.data;
+                        alert('numero ' + response.data.numero);
+                        console.log('numero ' + response.data.numero);
+                       $scope.numeroMedi = response.data.numero;
+                      
+                    },
+                    function (response) {
+                        alert('incorrecto');
+                        
+                    }
+            );
+        
+          }*/
+      
+        
+        $scope.AutorizacionPorMedicamento = function (){
+            $scope.consulAutoMedicamento = IPSRestAPI.getAutorizacionByMedicamento($scope.numeroMedi).success(function (data){
+            $scope.consulAutoMedicamento = data; 
+          });
+        };
+        
+        
         
         $scope.getAutorizacion = function(){
             $scope.consulAuto = IPSRestAPI.getConsultarAutorizacion().success(function(data){

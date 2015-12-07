@@ -429,7 +429,10 @@ public class Clase {
         return despacho;
     }
     
-       
+       public Medicamento consultarMedicamentoPorAutorizacion(Integer id) {
+        Medicamento med=mr.consultarMedicamentosAutorizacion(id);
+        return med;
+    }
       
       
       

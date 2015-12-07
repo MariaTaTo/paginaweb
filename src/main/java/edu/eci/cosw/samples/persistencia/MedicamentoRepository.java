@@ -30,4 +30,7 @@ public interface MedicamentoRepository extends CrudRepository<Medicamento, Integ
         "inner join mpp.medicamentos as med where pe.idPedidos= :idpedido ")
      public List<Medicamento> consultarMedicamentosPedido(@Param("idpedido") int idpedido);
     
+     @Query("from Medicamento med where med.autorizaciones.numero= :numero")
+     public Medicamento consultarMedicamentosAutorizacion(@Param("numero") Integer numero);
+     
 }

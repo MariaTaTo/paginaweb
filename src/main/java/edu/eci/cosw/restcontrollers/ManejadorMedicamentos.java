@@ -51,6 +51,11 @@ public class ManejadorMedicamentos {
     }
     
     
+    @RequestMapping(value = "/autorizaciones/{numero}",method = RequestMethod.GET)
+    public Medicamento consultarMedicamentoPOrAutorizacion(@PathVariable Integer numero){
+        return c.consultarMedicamentoPorAutorizacion(numero);
+    }
+    
     
     
 }
